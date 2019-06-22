@@ -44,7 +44,7 @@ window.addEventListener("load", function() {
         "dismissOnScroll": 500,
         "blacklistPage": ['/p/1-privacy'],
         "content": {
-            "message": "Questo sito utilizza cookie di profilazione di terze parti per mostrare pubblicità in linea con le tue preferenze.<br><br>Se vuoi saperne di più o negare il consenso all'installazione di cookie, consulta la pagina informativa sulla privacy.<br><br>Chiudendo questo banner, scorrendo questa pagina o cliccando qualunque suo elemento acconsenti all'uso dei cookie.",
+            "message": "Questo sito utilizza cookie di profilazione di terze parti per mostrare pubblicità in linea con le tue preferenze.<br><br>Se vuoi saperne di più o negare il consenso all'installazione di cookie, consulta l'informativa sulla privacy.<br><br>Chiudendo questo banner o scorrendo questa pagina acconsenti all'uso dei cookie.",
             "dismiss": "Accetto",
             "link": "Leggi l'informativa",
             "href": "/p/1-privacy"
