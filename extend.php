@@ -51,6 +51,11 @@ window.addEventListener("load", function() {
         },
         "onStatusChange": function(status, chosenBefore) {
             (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;
+        },
+        "onInitialise": function (status) {
+            if (status == 'dismiss') {
+                (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;
+            }
         }
     });
 });
