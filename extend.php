@@ -13,6 +13,7 @@ namespace BotFactory\FibraClick;
 
 use Flarum\Extend;
 use Flarum\Frontend\Document;
+use Illuminate\Contracts\Events\Dispatcher;
 
 return [
     (new Extend\Frontend('forum'))
@@ -62,5 +63,12 @@ window.addEventListener("load", function() {
 </script>
 EOT;
         }),
+
+    (new Extend\Frontend('admin'))
+        ->js(__DIR__.'/js/dist/admin.js'),
+
+    function (Dispatcher $events) {
+        $events->subscribe(LoadSettings::class);
+    }
 
 ];

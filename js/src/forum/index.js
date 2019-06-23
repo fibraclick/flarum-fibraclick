@@ -20,18 +20,24 @@ const mappings = {
 const regex = new RegExp('\\b(' + Object.keys(mappings).join('|') + ')\\b(?![^<]*>|[^<>]*</[^p])', 'gi');
 
 app.initializers.add('botfactoryit/fibraclick', () => {
-    extend(CommentPost.prototype, 'init', function (post) {
-        this.props.post.data.attributes.contentHtml =
-            this.props.post.data.attributes.contentHtml
-                .replace(regex, (match) => {
-                    let link = mappings[match.toLowerCase()];
-
-                    if (link) {
-                        return `<a class="wiki" target="_blank" href="${link}">${match}</a>`;
-                    }
-                    else {
-                        return match;
-                    }
-            });
-    });
+    extend(CommentPost.prototype, 'init', replaceKeywords);
 });
+
+function replaceKeywords(post) {
+    if (app.forum.attribute('fibraclick.keywords') != '1') {
+        return;
+    }
+
+    this.props.post.data.attributes.contentHtml =
+        this.props.post.data.attributes.contentHtml
+            .replace(regex, (match) => {
+                let link = mappings[match.toLowerCase()];
+
+                if (link) {
+                    return `<a class="wiki" target="_blank" href="${link}">${match}</a>`;
+                }
+                else {
+                    return match;
+                }
+            });
+}
