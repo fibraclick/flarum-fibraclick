@@ -3,9 +3,9 @@ import { extend } from 'flarum/extend';
 import CommentPost from 'flarum/components/CommentPost';
 
 const mappings = {
-    vula: 'https://fibra.click/vula-slu-nga/',
-    slu: 'https://fibra.click/vula-slu-nga/',
-    nga: 'https://fibra.click/vula-slu-nga/',
+    vula: 'https://fibra.click/vula-slu-nga/#vula-virtual-unbundled-local-access',
+    slu: 'https://fibra.click/vula-slu-nga/#slu-sub-loop-unbundling',
+    nga: 'https://fibra.click/vula-slu-nga/#nga-next-generation-access',
     bul: 'https://fibra.click/piano-bul/',
     'piano bul': 'https://fibra.click/piano-bul/',
     vectoring: 'https://fibra.click/vectoring/',
