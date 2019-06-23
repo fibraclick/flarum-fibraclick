@@ -12,8 +12,11 @@ const mappings = {
     vdsl: 'https://fibra.click/vdsl/',
     gpon: 'https://fibra.click/gpon/',
     'aree bianche': 'https://fibra.click/aree-nere-grigie-bianche/',
+    'area bianca': 'https://fibra.click/aree-nere-grigie-bianche/',
     'aree nere': 'https://fibra.click/aree-nere-grigie-bianche/',
-    'aree grigie': 'https://fibra.click/aree-nere-grigie-bianche/'
+    'area nera': 'https://fibra.click/aree-nere-grigie-bianche/',
+    'aree grigie': 'https://fibra.click/aree-nere-grigie-bianche/',
+    'area grigia': 'https://fibra.click/aree-nere-grigie-bianche/',
 };
 
 // https://stackoverflow.com/a/18622606/1633924
