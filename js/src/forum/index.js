@@ -11,6 +11,7 @@ const mappings = {
     'piano bul': 'https://fibra.click/piano-bul/',
     vectoring: 'https://fibra.click/vectoring/',
     vdsl: 'https://fibra.click/vdsl/',
+    diafonia: 'https://fibra.click/vdsl/#diafonia-e-vectoring',
     gpon: 'https://fibra.click/gpon/',
     'aree bianche': 'https://fibra.click/aree-nere-grigie-bianche/',
     'area bianca': 'https://fibra.click/aree-nere-grigie-bianche/',
