@@ -20,6 +20,8 @@ return [
         ->js(__DIR__.'/js/dist/forum.js')
         ->css(__DIR__.'/resources/less/forum.less')
         ->content(function (Document $document) {
+            $document->meta['theme-color'] = '#ffffff';
+
             $document->head[] = '<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,600">';
             $document->head[] = <<<EOT
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
