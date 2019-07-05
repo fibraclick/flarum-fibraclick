@@ -19,7 +19,10 @@ const mappings = {
     'area nera': 'https://fibra.click/aree-nere-grigie-bianche/',
     'aree grigie': 'https://fibra.click/aree-nere-grigie-bianche/',
     'area grigia': 'https://fibra.click/aree-nere-grigie-bianche/',
-    dns: 'https://fibra.click/dns/'
+    dns: 'https://fibra.click/dns/',
+    assestamento: 'https://fibra.click/assestamento/',
+    assesti: 'https://fibra.click/assestamento/',
+    assestarsi: 'https://fibra.click/assestamento/'
 };
 
 // https://stackoverflow.com/a/18622606/1633924
