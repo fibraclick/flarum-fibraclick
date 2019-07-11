@@ -25,7 +25,7 @@ return [
             $document->head[] = '<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,600">';
             $document->head[] = <<<EOT
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>(adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=1</script>
+<script>console.log('Pausing ads...');(adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=1</script>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
@@ -53,10 +53,12 @@ window.addEventListener("load", function() {
             "href": "/p/1-privacy"
         },
         "onStatusChange": function(status, chosenBefore) {
+            console.log('Resuming ads...');
             (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;
         },
         "onInitialise": function (status) {
             if (status == 'dismiss') {
+                console.log('Resuming ads...');
                 (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;
             }
         }
