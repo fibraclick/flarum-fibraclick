@@ -22,7 +22,12 @@ const mappings = {
     dns: 'https://fibra.click/dns/',
     assestamento: 'https://fibra.click/assestamento/',
     assesti: 'https://fibra.click/assestamento/',
-    assestarsi: 'https://fibra.click/assestamento/'
+    assestarsi: 'https://fibra.click/assestamento/',
+    snr: 'https://fibra.click/snr-sra-sos/',
+    sra: 'https://fibra.click/snr-sra-sos/',
+    sos: 'https://fibra.click/snr-sra-sos/',
+    '12db': 'https://fibra.click/snr-sra-sos/',
+    '12 db': 'https://fibra.click/snr-sra-sos/'
 };
 
 // https://stackoverflow.com/a/18622606/1633924
