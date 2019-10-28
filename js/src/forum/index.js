@@ -1,6 +1,9 @@
 import app from 'flarum/app';
-import { extend } from 'flarum/extend';
+import { extend, override } from 'flarum/extend';
 import CommentPost from 'flarum/components/CommentPost';
+import IndexPage from 'flarum/components/IndexPage';
+import LinkButton from 'flarum/components/LinkButton';
+import QuickLinksComponent from "./components/QuickLinksComponent";
 
 const mappings = {
     vula: 'https://fibra.click/vula-slu-nga/#vula-virtual-unbundled-local-access',
@@ -35,7 +38,56 @@ const regex = new RegExp('\\b(' + Object.keys(mappings).join('|') + ')\\b(?![^<]
 
 app.initializers.add('botfactoryit/fibraclick', () => {
     extend(CommentPost.prototype, 'init', replaceKeywords);
+    //override(IndexPage.prototype, 'hero', () => QuickLinksComponent.component());
+    extend(IndexPage.prototype, 'navItems', extendSidebar);
 });
+
+function extendSidebar(items) {
+    items.add('wiki',
+        LinkButton.component({
+            href: 'https://fibra.click',
+            children: 'Wiki',
+            icon: 'fas fa-align-left',
+            config: (el) => el.target = '_blank'
+        })
+    );
+
+    items.add('newsletter',
+        LinkButton.component({
+            href: 'https://fibra.click/newsletter/',
+            children: 'Newsletter',
+            icon: 'far fa-newspaper',
+            config: (el) => el.target = '_blank'
+        })
+    );
+
+    items.add('telegram',
+        LinkButton.component({
+            href: 'https://t.me/FibraClick',
+            children: 'Telegram',
+            icon: 'fab fa-telegram-plane',
+            config: (el) => el.target = '_blank'
+        })
+    );
+
+    items.add('twitter',
+        LinkButton.component({
+            href: 'https://twitter.com/FibraClick',
+            children: 'Twitter',
+            icon: 'fab fa-twitter',
+            config: (el) => el.target = '_blank'
+        })
+    );
+
+    items.add('facebook',
+        LinkButton.component({
+            href: 'https://www.facebook.com/FibraClick',
+            children: 'Facebook',
+            icon: 'fab fa-facebook-f',
+            config: (el) => el.target = '_blank'
+        })
+    );
+}
 
 function replaceKeywords(post) {
     if (app.forum.attribute('fibraclick.keywords') != '1') {
