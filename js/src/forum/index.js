@@ -30,7 +30,8 @@ const mappings = {
     sra: 'https://fibra.click/snr-sra-sos/',
     sos: 'https://fibra.click/snr-sra-sos/',
     '12db': 'https://fibra.click/snr-sra-sos/',
-    '12 db': 'https://fibra.click/snr-sra-sos/'
+    '12 db': 'https://fibra.click/snr-sra-sos/',
+    sinfi: 'https://fibra.click/bul-sinfi/'
 };
 
 // https://stackoverflow.com/a/18622606/1633924
