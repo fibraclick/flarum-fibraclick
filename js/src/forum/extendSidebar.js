@@ -3,7 +3,7 @@ import LinkButton from 'flarum/components/LinkButton';
 export default function(items) {
     items.add('wiki',
         LinkButton.component({
-            href: 'https://fibra.click',
+            href: 'https://fibra.click/?utm_source=fibraclick&utm_medium=referral&utm_campaign=navlinks',
             children: 'Wiki',
             icon: 'fas fa-align-left',
             config: (el) => el.target = '_blank'
@@ -12,7 +12,7 @@ export default function(items) {
 
     items.add('newsletter',
         LinkButton.component({
-            href: 'https://fibra.click/newsletter/',
+            href: 'https://fibra.click/newsletter/?utm_source=fibraclick&utm_medium=referral&utm_campaign=navlinks',
             children: 'Newsletter',
             icon: 'far fa-newspaper',
             config: (el) => el.target = '_blank'
