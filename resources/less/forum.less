@@ -9,7 +9,10 @@ a.wiki {
 }
 
 .quicklinks {
-    margin-top: 25px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    overflow-x: auto;
+    white-space: nowrap;
 
     a {
         margin-right: 10px;
@@ -25,5 +28,13 @@ a.wiki {
             color: white;
             text-decoration: none;
         }
+
+        i {
+            padding-right: 5px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        display: none;
     }
 }

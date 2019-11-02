@@ -4,11 +4,10 @@ export default function(items) {
     items.add('wiki',
         LinkButton.component({
             href: 'https://fibra.click',
-            children: 'Test',
+            children: 'Wiki',
             icon: 'fas fa-align-left',
             config: (el) => el.target = '_blank'
-        }),
-        -10
+        })
     );
 
     items.add('newsletter',
