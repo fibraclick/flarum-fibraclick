@@ -38,7 +38,6 @@ export default class QuickLinksComponent extends Component {
             t += link.text;
         }
 
-        console.log(t);
         return t;
     }
 }
