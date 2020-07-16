@@ -5,8 +5,8 @@ const mappings = {
     slu: 'https://fibra.click/vula-slu-nga/#slu-sub-loop-unbundling',
     // nga: 'https://fibra.click/vula-slu-nga/#nga-next-generation-access',
     'bs-nga': 'https://fibra.click/vula-slu-nga/#nga-next-generation-access',
-    bul: 'https://fibra.click/piano-bul/',
     'piano bul': 'https://fibra.click/piano-bul/',
+    bul: 'https://fibra.click/piano-bul/',
     vectoring: 'https://fibra.click/vectoring/',
     vdsl: 'https://fibra.click/vdsl/',
     diafonia: 'https://fibra.click/vdsl/#diafonia-e-vectoring',
@@ -27,7 +27,11 @@ const mappings = {
     '12db': 'https://fibra.click/snr-sra-sos/',
     '12 db': 'https://fibra.click/snr-sra-sos/',
     sinfi: 'https://fibra.click/bul-sinfi/',
-    speedtest: 'https://fibra.click/speedtest/'
+    speedtest: 'https://fibra.click/speedtest/',
+    cassiopea: 'https://fibra.click/cassiopea/',
+    consultazione: 'https://fibra.click/consultazione-2020/',
+    hlog: 'https://fibra.click/hlog/',
+    qln: 'https://fibra.click/hlog/'
 };
 
 // https://stackoverflow.com/a/18622606/1633924
