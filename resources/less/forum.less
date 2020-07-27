@@ -3,9 +3,9 @@ body {
 }
 
 a.wiki {
-    border-bottom: 2px dotted #3fc160;
+    border-bottom: 2px dotted @primary-color;
     font-weight: 400;
-    color: #111;
+    color: @text-color;
 }
 
 .quicklinks {
@@ -20,14 +20,14 @@ a.wiki {
     a {
         margin-right: 10px;
         padding: 5px 10px;
-        border: 1px solid #3fc160;
-        color: #3fc160;
+        border: 1px solid @primary-color;
+        color: @primary-color;
         border-radius: 5px;
         font-weight: bold;
         transition: 0.1s;
 
         &:hover {
-            background: #3fc160;
+            background: @primary-color;
             color: white;
             text-decoration: none;
         }
@@ -37,7 +37,7 @@ a.wiki {
         }
     }
 
-    @media (min-width: 768px) {
+    @media @tablet-up {
         display: none;
     }
 }
