@@ -26,7 +26,7 @@ class LoadSettings
         if ($event->isSerializer(ForumSerializer::class)) {
             $additionalSettings = [];
 
-            $additionalSettings['fibraclick.keywords'] = $this->settings->get('fibraclick.keywords');
+            $additionalSettings['fibraclick.highlightKeywords'] = $this->settings->get('fibraclick.highlightKeywords');
 
             $event->attributes = array_merge($event->attributes, $additionalSettings);
         }

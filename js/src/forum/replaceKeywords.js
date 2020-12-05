@@ -31,19 +31,19 @@ const mappings = {
     cassiopea: 'https://fibra.click/cassiopea/',
     consultazione: 'https://fibra.click/consultazione-2020/',
     hlog: 'https://fibra.click/hlog/',
-    qln: 'https://fibra.click/hlog/'
+    qln: 'https://fibra.click/hlog/',
+    'piano aree grigie': 'https://fibra.click/piano-bul/#il-piano-aree-grigie'
 };
 
 // https://stackoverflow.com/a/18622606/1633924
 const regex = new RegExp('\\b(' + Object.keys(mappings).join('|') + ')\\b(?![^<]*>|[^<>]*</[^p])', 'gi');
 
-export default function(post) {
-    if (app.forum.attribute('fibraclick.keywords') != '1') {
+export default function() {
+    if (app.forum.attribute('fibraclick.highlightKeywords') != '1') {
         return;
     }
 
-    this.props.post.data.attributes.contentHtml =
-        this.props.post.data.attributes.contentHtml
+    this.attrs.post.data.attributes.contentHtml = this.attrs.post.data.attributes.contentHtml
             .replace(regex, (match) => {
                 let link = mappings[match.toLowerCase()];
 

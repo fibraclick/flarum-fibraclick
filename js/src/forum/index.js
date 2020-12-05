@@ -3,15 +3,17 @@ import { extend, override } from 'flarum/extend';
 import CommentPost from 'flarum/components/CommentPost';
 import IndexPage from 'flarum/components/IndexPage';
 import WelcomeHero from 'flarum/components/WelcomeHero';
-import QuickLinksComponent from './QuickLinksComponent';
+import QuickLinksComponent from './components/QuickLinksComponent';
 import replaceKeywords from './replaceKeywords';
 import extendSidebar from './extendSidebar';
 
 app.initializers.add('botfactoryit/fibraclick', () => {
-    extend(CommentPost.prototype, 'init', replaceKeywords);
+    extend(CommentPost.prototype, 'oninit', replaceKeywords);
+
     override(IndexPage.prototype, 'hero', () =>
         [ WelcomeHero.component(), QuickLinksComponent.component() ]
     );
+
     extend(IndexPage.prototype, 'navItems', extendSidebar);
 
     extend(app, 'mount', function (vdom) {
