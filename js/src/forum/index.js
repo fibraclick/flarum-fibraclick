@@ -5,7 +5,8 @@ import IndexPage from 'flarum/components/IndexPage';
 import WelcomeHero from 'flarum/components/WelcomeHero';
 import QuickLinksComponent from './components/QuickLinksComponent';
 import replaceKeywords from './replaceKeywords';
-import extendSidebar from './extendSidebar';
+import addLinksToSidebar from './addLinksToSidebar';
+import addTagsToSidebar from './addTagsToSidebar';
 import addAdSense from "./addAdSense";
 
 app.initializers.add('botfactoryit/fibraclick', () => {
@@ -18,7 +19,10 @@ app.initializers.add('botfactoryit/fibraclick', () => {
     );
 
     // Extend sidebar items with quick links
-    extend(IndexPage.prototype, 'navItems', extendSidebar);
+    extend(IndexPage.prototype, 'navItems', addLinksToSidebar);
+
+    // Add secondary tags to sidebar
+    extend(IndexPage.prototype, 'navItems', addTagsToSidebar);
 
     // Analytics
     extend(app, 'mount', function (vnode) {
@@ -31,6 +35,5 @@ app.initializers.add('botfactoryit/fibraclick', () => {
         }
     });
 
-    // AdSense
     addAdSense();
 });
