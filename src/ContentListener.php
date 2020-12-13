@@ -42,7 +42,7 @@ class ContentListener
         $this->addThemeColor();
         $this->addFont();
 
-        if ($this->settings->get("fibraclick.showAdSense") == '1') {
+        if ($this->settings->get("fibraclick.ads.load") == '1') {
             $this->addAdSenseAndConsent();
         }
     }

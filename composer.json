@@ -1,38 +1,37 @@
 {
-  "name": "botfactoryit/fibraclick",
-  "description": "",
-  "keywords": [
-    "flarum"
-  ],
-  "type": "flarum-extension",
-  "license": "MIT",
-  "require": {
-    "flarum/core": "^0.1.0-beta.14",
-    "fof/components": "^0.2.0"
-  },
-  "authors": [
-    {
-      "name": "Matteo Contrini",
-      "email": "matteo@contrini.it",
-      "role": "Developer"
-    }
-  ],
-  "autoload": {
-    "psr-4": {
-      "BotFactory\\FibraClick\\": "src/"
-    }
-  },
-  "extra": {
-    "flarum-extension": {
-      "title": "FibraClick",
-      "icon": {
-        "name": "",
-        "backgroundColor": "",
-        "color": ""
-      }
+    "name": "botfactoryit/fibraclick",
+    "description": "",
+    "keywords": [
+        "flarum"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^0.1.0-beta.14"
     },
-    "flagrow": {
-      "discuss": ""
+    "authors": [
+        {
+            "name": "Matteo Contrini",
+            "email": "matteo@contrini.it",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "BotFactory\\FibraClick\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "FibraClick",
+            "icon": {
+                "name": "",
+                "backgroundColor": "",
+                "color": ""
+            }
+        },
+        "flagrow": {
+            "discuss": ""
+        }
     }
-  }
 }

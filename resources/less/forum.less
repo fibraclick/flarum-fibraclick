@@ -15,7 +15,11 @@ a.wiki {
     white-space: nowrap;
 
     scrollbar-width: none; /* firefox */
-    &::-webkit-scrollbar { display: none; } /* webkit */
+
+    &::-webkit-scrollbar {
+        /* webkit */
+        display: none;
+    }
 
     a {
         margin-right: 10px;
@@ -40,4 +44,9 @@ a.wiki {
     @media @tablet-up {
         display: none;
     }
+}
+
+.FibraClickAds-fake-poststream-item {
+    // Mimic `.PostStream-item` borders even if we are in fact inside one
+    border-top: 1px solid @control-bg;
 }

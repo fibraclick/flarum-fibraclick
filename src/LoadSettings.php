@@ -11,6 +11,14 @@ class LoadSettings
 {
     private $settings;
 
+    private $settingsToLoad = [
+        'highlightKeywords',
+        'ads.postsInterval',
+        'ads.show',
+        'ads.betweenPosts',
+        'ads.sidebar'
+    ];
+
     public function __construct(SettingsRepositoryInterface $settings)
     {
         $this->settings = $settings;
@@ -26,9 +34,16 @@ class LoadSettings
         if ($event->isSerializer(ForumSerializer::class)) {
             $additionalSettings = [];
 
-            $additionalSettings['fibraclick.highlightKeywords'] = $this->settings->get('fibraclick.highlightKeywords');
+            foreach($this->settingsToLoad as $key) {
+                $additionalSettings[$this->prefix($key)] = $this->settings->get($this->prefix($key));
+            }
 
             $event->attributes = array_merge($event->attributes, $additionalSettings);
         }
+    }
+
+    protected function prefix($key)
+    {
+        return "fibraclick.$key";
     }
 }
