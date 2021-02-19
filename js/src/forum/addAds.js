@@ -18,7 +18,7 @@ export default function() {
             const postsAfterWhichPlaceAds = [];
 
             for (let i = 0; i <= postIds.length - 2; i++) {
-                if (i % between == 0) {
+                if (i % between === 0) {
                     postsAfterWhichPlaceAds.push(postIds[i]);
                 }
             }

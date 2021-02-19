@@ -7,7 +7,7 @@
     "type": "flarum-extension",
     "license": "MIT",
     "require": {
-        "flarum/core": "^0.1.0-beta.14"
+        "flarum/core": ">=0.1.0-beta.15 <0.1.0-beta.16"
     },
     "authors": [
         {
@@ -25,9 +25,9 @@
         "flarum-extension": {
             "title": "FibraClick",
             "icon": {
-                "name": "",
-                "backgroundColor": "",
-                "color": ""
+                "image": "icon.png",
+                "backgroundColor": "#3fc160",
+                "color": "#ffffff"
             }
         },
         "flagrow": {

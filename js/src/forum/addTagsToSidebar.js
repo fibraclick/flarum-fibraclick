@@ -11,11 +11,11 @@ export default function addTagsToSidebar(items) {
     }
 
     // There were no tags
-    if (i == 1) {
+    if (i === 1) {
         return;
     }
 
-    // https://github.com/flarum/tags/blob/v0.1.0-beta.14/js/src/forum/addTagList.js
+    // https://github.com/flarum/tags/blob/v0.1.0-beta.15/js/src/forum/addTagList.js
     const params = app.search.stickyParams();
     const tags = app.store.all('tags');
     const currentTag = this.currentTag();

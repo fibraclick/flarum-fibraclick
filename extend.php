@@ -3,7 +3,6 @@
 namespace BotFactory\FibraClick;
 
 use Flarum\Extend;
-use Illuminate\Contracts\Events\Dispatcher;
 
 return [
     (new Extend\Frontend('forum'))
@@ -14,7 +13,10 @@ return [
     (new Extend\Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js'),
 
-    function (Dispatcher $events) {
-        $events->subscribe(LoadSettings::class);
-    }
+    (new Extend\Settings)
+        ->serializeToForum('fibraclick.highlightKeywords', 'fibraclick.highlightKeywords')
+        ->serializeToForum('fibraclick.ads.postsInterval', 'fibraclick.ads.postsInterval')
+        ->serializeToForum('fibraclick.ads.show', 'fibraclick.ads.show')
+        ->serializeToForum('fibraclick.ads.betweenPosts', 'fibraclick.ads.betweenPosts')
+        ->serializeToForum('fibraclick.ads.sidebar', 'fibraclick.ads.sidebar')
 ];
