@@ -38,17 +38,24 @@ export default function() {
         }
     });
 
-    extend(PostStream.prototype, 'oncreate', function () {
-        this.$('.FibraClickAds-between-posts script').each(function () {
-            eval.call(window, $(this).text());
-        });
-    });
+    extend(PostStream.prototype, 'oncreate', evalAdsJs);
+    extend(PostStream.prototype, 'onupdate', evalAdsJs);
 
     extend(IndexPage.prototype, 'sidebarItems', function(items) {
         const advertisement = app.forum.attribute('fibraclick.ads.sidebar');
 
         if (advertisement && !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
+            // TODO: this doesn't work, no js is run
             items.add('fibraclick-ad', m.trust(advertisement));
+        }
+    });
+}
+
+function evalAdsJs() {
+    this.$('.FibraClickAds-between-posts script').each(function () {
+        if (!$(this).data('executed')) {
+            eval.call(window, $(this).text());
+            $(this).data('executed', true);
         }
     });
 }
