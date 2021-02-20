@@ -3,17 +3,15 @@ import Separator from 'flarum/components/Separator';
 import sortTags from 'flarum/tags/utils/sortTags';
 
 export default function addTagsToSidebar(items) {
-    let i = 1;
+    let currentItems = items.toArray();
 
-    while (items.has(`tag${i}`)) {
-        items.remove(`tag${i}`);
-        i++;
+    for (let item of currentItems) {
+        if (item.itemName.match(/^tag[0-9]+$/)) {
+            items.remove(item.itemName);
+        }
     }
 
-    // There were no tags
-    if (i === 1) {
-        return;
-    }
+    items.remove('moreTags');
 
     // https://github.com/flarum/tags/blob/v0.1.0-beta.15/js/src/forum/addTagList.js
     const params = app.search.stickyParams();
@@ -31,7 +29,7 @@ export default function addTagsToSidebar(items) {
     };
 
     sortTags(tags)
-        .filter(tag => tag.position() !== null)
+        .filter(tag => tag.position() !== null && (!tag.isChild() || (currentTag && (tag.parent() === currentTag || tag.parent() === currentTag.parent()))))
         .forEach(addTag);
 
     items.add('separator2', Separator.component(), -14);
