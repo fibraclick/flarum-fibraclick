@@ -38,6 +38,12 @@ export default function() {
         }
     });
 
+    extend(PostStream.prototype, 'oncreate', function () {
+        this.$('.FibraClickAds-between-posts script').each(function () {
+            eval.call(window, $(this).text());
+        });
+    });
+
     extend(IndexPage.prototype, 'sidebarItems', function(items) {
         const advertisement = app.forum.attribute('fibraclick.ads.sidebar');
 

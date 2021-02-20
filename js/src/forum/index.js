@@ -7,7 +7,7 @@ import QuickLinksComponent from './components/QuickLinksComponent';
 import replaceKeywords from './replaceKeywords';
 import addLinksToSidebar from './addLinksToSidebar';
 import addTagsToSidebar from './addTagsToSidebar';
-import addAdSense from "./addAds";
+import addAds from "./addAds";
 
 app.initializers.add('botfactoryit/fibraclick', () => {
     // Enable keywords feature
@@ -35,5 +35,5 @@ app.initializers.add('botfactoryit/fibraclick', () => {
         }
     });
 
-    addAdSense();
+    addAds();
 });
