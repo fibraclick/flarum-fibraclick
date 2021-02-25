@@ -2,6 +2,7 @@
 
 namespace BotFactory\FibraClick;
 
+use BotFactory\FibraClick\Extenders\BindQueueFailer;
 use Flarum\Extend;
 
 return [
@@ -18,5 +19,7 @@ return [
         ->serializeToForum('fibraclick.ads.postsInterval', 'fibraclick.ads.postsInterval')
         ->serializeToForum('fibraclick.ads.show', 'fibraclick.ads.show')
         ->serializeToForum('fibraclick.ads.betweenPosts', 'fibraclick.ads.betweenPosts')
-        ->serializeToForum('fibraclick.ads.sidebar', 'fibraclick.ads.sidebar')
+        ->serializeToForum('fibraclick.ads.sidebar', 'fibraclick.ads.sidebar'),
+
+    new BindQueueFailer(),
 ];
