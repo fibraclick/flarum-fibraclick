@@ -34,5 +34,21 @@ app.initializers.add('botfactoryit/fibraclick', () => {
                 <label>Ads - Sidebar</label>
                 <textarea className="FormControl" bidi={this.setting('fibraclick.ads.sidebar')}></textarea>
             </div>;
+        })
+
+        .registerSetting({
+            setting: 'fibraclick.telegram.token',
+            label: 'Telegram - Token',
+            type: 'text'
+        })
+        .registerSetting({
+            setting: 'fibraclick.telegram.discussionsEnabled',
+            label: 'Telegram - Enabled discussions posting',
+            type: 'boolean'
+        })
+        .registerSetting({
+            setting: 'fibraclick.telegram.discussionsChannel',
+            label: 'Telegram - Discussions channel',
+            type: 'text'
         });
 });

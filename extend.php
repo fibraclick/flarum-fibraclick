@@ -3,6 +3,9 @@
 namespace BotFactory\FibraClick;
 
 use BotFactory\FibraClick\Extenders\BindQueueFailer;
+use BotFactory\FibraClick\Listeners\ContentListener;
+use BotFactory\FibraClick\Listeners\DiscussionStartedListener;
+use Flarum\Discussion\Event\Started;
 use Flarum\Extend;
 
 return [
@@ -22,4 +25,7 @@ return [
         ->serializeToForum('fibraclick.ads.sidebar', 'fibraclick.ads.sidebar'),
 
     new BindQueueFailer(),
+
+    (new Extend\Event)
+        ->listen(Started::class, DiscussionStartedListener::class)
 ];

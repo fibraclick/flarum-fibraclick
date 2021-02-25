@@ -1,7 +1,7 @@
 <?php
 
 
-namespace BotFactory\FibraClick;
+namespace BotFactory\FibraClick\Listeners;
 
 
 use Flarum\Frontend\Document;
