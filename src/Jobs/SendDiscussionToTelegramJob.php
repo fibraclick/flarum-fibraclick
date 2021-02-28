@@ -43,7 +43,7 @@ class SendDiscussionToTelegramJob
             $tagLine = "";
         }
 
-        $text = sprintf("📰 <strong>%s</strong>\n👤 <em>%s</em>%s\n🌍 <a href=\"%s\">Link</a>", $title, $author, $tagLine, $url);
+        $text = sprintf("📰 <strong>%s</strong>\n👤 <em>%s</em>%s\n🌍 %s", $title, $author, $tagLine, $url);
 
         $client = new Client([
             'base_uri' => 'https://api.telegram.org/bot' . $token . '/',
@@ -59,6 +59,6 @@ class SendDiscussionToTelegramJob
     }
 
     public function mapTag($tag) {
-        return "#" . $tag->name;
+        return "#" . $tag->slug;
     }
 }
