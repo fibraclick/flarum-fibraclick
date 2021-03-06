@@ -10,6 +10,7 @@ import addTagsToSidebar from './addTagsToSidebar';
 import addAds from "./addAds";
 import addCookieConsent from "./addCookieConsent";
 import addAnalyticsCompat from "./addAnalyticsCompat";
+import addPolicyConsent from "./addPolicyConsent";
 
 app.initializers.add('botfactoryit/fibraclick', () => {
     // Enable keywords feature
@@ -31,4 +32,6 @@ app.initializers.add('botfactoryit/fibraclick', () => {
     addAds();
 
     addCookieConsent();
+
+    addPolicyConsent();
 });
