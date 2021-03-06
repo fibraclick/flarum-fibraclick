@@ -43,7 +43,13 @@ class ContentListener
         $this->addFont();
 
         if ($this->settings->get("fibraclick.ads.load") == '1') {
-            $this->addAdSenseAndConsent();
+            $this->addAdSense();
+        }
+
+        $trackingCode = $this->settings->get("fibraclick.analytics.trackingCode");
+
+        if ($trackingCode != "") {
+            $this->addAnalytics($trackingCode);
         }
     }
 
@@ -57,51 +63,41 @@ class ContentListener
         $this->document->head[] = '<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,600">';
     }
 
-    private function addAdSenseAndConsent()
+    private function addAdSense()
     {
         $this->document->head[] = <<<EOT
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>console.log('Pausing ads...');(adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=1</script>
-
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 <script>
-window.addEventListener("load", function() {
-    window.cookieconsent.initialise({
-        "palette": {
-            "popup": {
-            "background": "#efefef",
-            "text": "#404040"
-            },
-            "button": {
-            "background": "#5bb75b",
-            "text": "#ffffff"
-            }
-        },
-        "theme": "edgeless",
-        "position": "bottom-right",
-        "dismissOnScroll": 500,
-        "blacklistPage": ['/p/1-privacy'],
-        "content": {
-            "message": "Questo sito utilizza cookie di profilazione di terze parti per mostrare pubblicità in linea con le tue preferenze.<br><br>Se vuoi saperne di più o negare il consenso all'installazione di cookie, consulta l'informativa sulla privacy.<br><br>Chiudendo questo banner o scorrendo questa pagina acconsenti all'uso dei cookie.",
-            "dismiss": "Accetto",
-            "link": "Leggi l'informativa",
-            "href": "/p/1-privacy"
-        },
-        "onStatusChange": function(status, chosenBefore) {
-            console.log('Resuming ads...');
-            (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;
-        },
-        "onInitialise": function (status) {
-            if (status == 'dismiss') {
-                console.log('Resuming ads...');
-                (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;
-            }
-        }
-    });
-});
+    console.log('Pausing ads...');
+    (adsbygoogle=window.adsbygoogle||[]).requestNonPersonalizedAds=1;
+    (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=1;
+    
+    window.resumeBasicAds = function() {
+        console.log('Resuming basic ads...');
+        (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;
+    }
+    
+    window.resumePersonalizedAds = function() {
+        console.log('Resuming personalized ads...');
+        (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;
+        (adsbygoogle=window.adsbygoogle||[]).requestNonPersonalizedAds=0;
+    }
 </script>
 EOT;
     }
 
+    private function addAnalytics($trackingCode)
+    {
+        $this->document->head[] = <<<EOT
+<script async src="https://www.googletagmanager.com/gtag/js?id=$trackingCode"></script>
+<script type="text/plain" data-type="text/javascript" data-name="analytics">
+    console.log('Resuming analytics...');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '$trackingCode');
+</script>
+EOT;
+
+    }
 }

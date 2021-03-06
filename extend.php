@@ -22,7 +22,8 @@ return [
         ->serializeToForum('fibraclick.ads.postsInterval', 'fibraclick.ads.postsInterval')
         ->serializeToForum('fibraclick.ads.show', 'fibraclick.ads.show')
         ->serializeToForum('fibraclick.ads.betweenPosts', 'fibraclick.ads.betweenPosts')
-        ->serializeToForum('fibraclick.ads.sidebar', 'fibraclick.ads.sidebar'),
+        ->serializeToForum('fibraclick.ads.sidebar', 'fibraclick.ads.sidebar')
+        ->serializeToForum('fibraclick.analytics.trackingCode', 'fibraclick.analytics.trackingCode'),
 
     new BindQueueFailer(),
 

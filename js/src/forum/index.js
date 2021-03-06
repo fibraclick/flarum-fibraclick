@@ -8,6 +8,8 @@ import replaceKeywords from './replaceKeywords';
 import addLinksToSidebar from './addLinksToSidebar';
 import addTagsToSidebar from './addTagsToSidebar';
 import addAds from "./addAds";
+import addCookieConsent from "./addCookieConsent";
+import addAnalyticsCompat from "./addAnalyticsCompat";
 
 app.initializers.add('botfactoryit/fibraclick', () => {
     // Enable keywords feature
@@ -24,16 +26,9 @@ app.initializers.add('botfactoryit/fibraclick', () => {
     // Add secondary tags to sidebar
     extend(IndexPage.prototype, 'navItems', addTagsToSidebar);
 
-    // Analytics
-    extend(app, 'mount', function (vnode) {
-        if (app.data.googleTrackingCode && gtag) {
-            gtag('config', app.data.googleTrackingCode, {
-                'custom_map': {'dimension1': 'isLoggedIn'}
-            });
-
-            gtag('event', 'isLoggedInEvent', {'isLoggedIn': !!app.session.user });
-        }
-    });
+    addAnalyticsCompat();
 
     addAds();
+
+    addCookieConsent();
 });

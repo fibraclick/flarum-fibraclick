@@ -5,7 +5,7 @@ import IndexPage from 'flarum/components/IndexPage';
 
 export default function() {
     extend(PostStream.prototype, 'view', function(component) {
-        if (app.forum.attribute('fibraclick.ads.show') != '1') {
+        if (app.forum.attribute('fibraclick.ads.show') !== '1') {
             return;
         }
 

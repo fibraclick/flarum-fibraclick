@@ -35,7 +35,11 @@ app.initializers.add('botfactoryit/fibraclick', () => {
                 <textarea className="FormControl" bidi={this.setting('fibraclick.ads.sidebar')}></textarea>
             </div>;
         })
-
+        .registerSetting({
+            setting: 'fibraclick.analytics.trackingCode',
+            label: 'Analytics - Tracking code (leave empty to disable)',
+            type: 'text'
+        })
         .registerSetting({
             setting: 'fibraclick.telegram.token',
             label: 'Telegram - Token',
