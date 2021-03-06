@@ -5,6 +5,7 @@ namespace BotFactory\FibraClick\Listeners;
 
 
 use BotFactory\FibraClick\Jobs\SendDiscussionToTelegramJob;
+use Flarum\Discussion\Discussion;
 use Flarum\Discussion\Event\Started;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\User\Guest;
@@ -28,12 +29,13 @@ class DiscussionStartedListener
         $this->settings = $settings;
     }
 
-    public function handle(Started $event) {
+    public function handle(Started $event)
+    {
         if (!(bool)$this->settings->get('fibraclick.telegram.discussionsEnabled', false)) {
             return;
         }
 
-        $isPublic = (new Guest)->can('viewDiscussions', $event->discussion);
+        $isPublic = Discussion::whereVisibleTo(new Guest)->where('id', $event->discussion->id)->exists();
 
         if ($isPublic) {
             $this->queue->push(
