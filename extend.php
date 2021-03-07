@@ -5,8 +5,10 @@ namespace BotFactory\FibraClick;
 use BotFactory\FibraClick\Extenders\BindQueueFailer;
 use BotFactory\FibraClick\Listeners\ContentListener;
 use BotFactory\FibraClick\Listeners\DiscussionStartedListener;
+use BotFactory\FibraClick\Listeners\UserRegisteredListener;
 use Flarum\Discussion\Event\Started;
 use Flarum\Extend;
+use Flarum\User\Event\Registered;
 
 return [
     (new Extend\Frontend('forum'))
@@ -29,4 +31,5 @@ return [
 
     (new Extend\Event)
         ->listen(Started::class, DiscussionStartedListener::class)
+        ->listen(Registered::class, UserRegisteredListener::class)
 ];
