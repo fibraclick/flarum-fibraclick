@@ -1,5 +1,5 @@
 import app from 'flarum/app';
-import { extend, override } from 'flarum/extend';
+import {extend, override} from 'flarum/extend';
 import CommentPost from 'flarum/components/CommentPost';
 import IndexPage from 'flarum/components/IndexPage';
 import WelcomeHero from 'flarum/components/WelcomeHero';
@@ -18,7 +18,7 @@ app.initializers.add('botfactoryit/fibraclick', () => {
 
     // Add quick links to the top
     override(IndexPage.prototype, 'hero', () =>
-        [ WelcomeHero.component(), QuickLinksComponent.component() ]
+        [WelcomeHero.component(), QuickLinksComponent.component()]
     );
 
     // Extend sidebar items with quick links
@@ -34,4 +34,10 @@ app.initializers.add('botfactoryit/fibraclick', () => {
     addCookieConsent();
 
     addPolicyConsent();
+
+    extend(CommentPost.prototype, 'headerItems', function (items) {
+        if (this.attrs.post.number() !== 1 && this.attrs.post.discussion().user() === this.attrs.post.user()) {
+            items.add('author-label', m('span.item-user-label', 'Autore'), 99);
+        }
+    });
 });
