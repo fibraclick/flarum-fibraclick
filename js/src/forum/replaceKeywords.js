@@ -32,7 +32,8 @@ const mappings = {
     consultazione: 'https://fibra.click/consultazione-2020/',
     hlog: 'https://fibra.click/hlog/',
     qln: 'https://fibra.click/hlog/',
-    'piano aree grigie': 'https://fibra.click/piano-bul/#il-piano-aree-grigie'
+    'piano aree grigie': 'https://fibra.click/piano-bul/#il-piano-aree-grigie',
+    fibercop: 'https://fibra.click/fibercop/'
 };
 
 // https://stackoverflow.com/a/18622606/1633924
