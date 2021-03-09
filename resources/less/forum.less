@@ -51,8 +51,17 @@ a.wiki {
     border-top: 1px solid @control-bg;
 }
 
-.Post-header .item-user-label {
-    border: 1px solid fade(@muted-color, 80%);
-    padding: 1px 10px;
-    border-radius: 15px;
+.Post-header {
+    .item-user-label {
+        padding: 1px 10px;
+        border-radius: 15px;
+
+        &.author {
+            border: 1px solid fade(@muted-color, 80%);
+        }
+
+        &.flair {
+            color: white;
+        }
+    }
 }

@@ -4,6 +4,8 @@ import CommentPost from 'flarum/components/CommentPost';
 import IndexPage from 'flarum/components/IndexPage';
 import WelcomeHero from 'flarum/components/WelcomeHero';
 import QuickLinksComponent from './components/QuickLinksComponent';
+import User from 'flarum/models/User';
+import Model from 'flarum/Model';
 import replaceKeywords from './replaceKeywords';
 import addLinksToSidebar from './addLinksToSidebar';
 import addTagsToSidebar from './addTagsToSidebar';
@@ -11,6 +13,8 @@ import addAds from "./addAds";
 import addCookieConsent from "./addCookieConsent";
 import addAnalyticsCompat from "./addAnalyticsCompat";
 import addPolicyConsent from "./addPolicyConsent";
+import addPostHeaderItems from "./addPostHeaderItems";
+import extendUserModal from "./extendUserModal";
 
 app.initializers.add('botfactoryit/fibraclick', () => {
     // Enable keywords feature
@@ -35,9 +39,10 @@ app.initializers.add('botfactoryit/fibraclick', () => {
 
     addPolicyConsent();
 
-    extend(CommentPost.prototype, 'headerItems', function (items) {
-        if (this.attrs.post.number() !== 1 && this.attrs.post.discussion().user() === this.attrs.post.user()) {
-            items.add('author-label', m('span.item-user-label', 'Autore'), 99);
-        }
-    });
+    User.prototype.flairName = Model.attribute('flairName');
+    User.prototype.flairColor = Model.attribute('flairColor');
+
+    extend(CommentPost.prototype, 'headerItems', addPostHeaderItems);
+
+    extendUserModal();
 });

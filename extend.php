@@ -5,11 +5,15 @@ namespace BotFactory\FibraClick;
 use BotFactory\FibraClick\Extenders\BindQueueFailer;
 use BotFactory\FibraClick\Listeners\ContentListener;
 use BotFactory\FibraClick\Listeners\DiscussionStartedListener;
+use BotFactory\FibraClick\Listeners\UserSavingListener;
 use BotFactory\FibraClick\Listeners\UserRegisteredListener;
+use BotFactory\FibraClick\Serializers\AddFlairFields;
 use Flarum\Api\Controller\ShowDiscussionController;
+use Flarum\Api\Serializer\UserSerializer;
 use Flarum\Discussion\Event\Started;
 use Flarum\Extend;
 use Flarum\User\Event\Registered;
+use Flarum\User\Event\Saving;
 
 return [
     (new Extend\Frontend('forum'))
@@ -26,7 +30,8 @@ return [
         ->serializeToForum('fibraclick.ads.show', 'fibraclick.ads.show')
         ->serializeToForum('fibraclick.ads.betweenPosts', 'fibraclick.ads.betweenPosts')
         ->serializeToForum('fibraclick.ads.sidebar', 'fibraclick.ads.sidebar')
-        ->serializeToForum('fibraclick.analytics.trackingCode', 'fibraclick.analytics.trackingCode'),
+        ->serializeToForum('fibraclick.analytics.trackingCode', 'fibraclick.analytics.trackingCode')
+        ->serializeToForum('fibraclick.flair.show', 'fibraclick.flair.show'),
 
     new BindQueueFailer(),
 
@@ -35,5 +40,11 @@ return [
         ->listen(Registered::class, UserRegisteredListener::class),
 
     (new Extend\ApiController(ShowDiscussionController::class))
-        ->addInclude('user')
+        ->addInclude('user'),
+
+    (new Extend\ApiSerializer(UserSerializer::class))
+        ->mutate(AddFlairFields::class),
+
+    (new Extend\Event())
+        ->listen(Saving::class, UserSavingListener::class)
 ];

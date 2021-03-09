@@ -54,5 +54,10 @@ app.initializers.add('botfactoryit/fibraclick', () => {
             setting: 'fibraclick.telegram.discussionsChannel',
             label: 'Telegram - Discussions channel',
             type: 'text'
+        })
+        .registerSetting({
+            setting: 'fibraclick.flair.show',
+            label: 'Flair - Show',
+            type: 'boolean'
         });
 });
