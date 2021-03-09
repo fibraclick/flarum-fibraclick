@@ -4,10 +4,10 @@ export default function (items) {
     }
 
     if (app.forum.attribute('fibraclick.flair.show') === '1') {
-        const flairName = this.attrs.post.user()?.attribute('flairName');
+        const flairName = this.attrs.post.user()?.flairName();
 
         if (flairName) {
-            const flairColor = this.attrs.post.user().attribute('flairColor');
+            const flairColor = this.attrs.post.user().flairColor();
 
             items.add(
                 'flair',
