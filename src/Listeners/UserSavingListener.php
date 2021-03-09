@@ -11,6 +11,10 @@ class UserSavingListener
 {
     public function handle(Saving $event)
     {
+        if (!$event->actor->isAdmin()) {
+            return;
+        }
+
         $flairName = Arr::get($event->data, 'attributes.flairName');
 
         if ($flairName != null) {
