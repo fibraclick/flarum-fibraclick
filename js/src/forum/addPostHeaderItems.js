@@ -4,16 +4,20 @@ export default function (items) {
     }
 
     if (app.forum.attribute('fibraclick.flair.show') === '1') {
-        const flairName = this.attrs.post.user()?.flairName();
+        const user = this.attrs.post.user();
 
-        if (flairName) {
-            const flairColor = this.attrs.post.user().flairColor();
+        if (user) {
+            const flairName = user.flairName();
 
-            items.add(
-                'flair',
-                m('span.item-user-label.flair', {style: {background: flairColor}}, flairName),
-                99
-            );
+            if (flairName) {
+                const flairColor = this.attrs.post.user().flairColor();
+
+                items.add(
+                    'flair',
+                    m('span.item-user-label.flair', {style: {background: flairColor}}, flairName),
+                    99
+                );
+            }
         }
     }
 }
