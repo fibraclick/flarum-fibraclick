@@ -1,6 +1,6 @@
-import {extend} from 'flarum/extend';
+import {extend} from 'flarum/common/extend';
 import app from 'flarum/app';
-import Page from 'flarum/components/Page';
+import Page from 'flarum/common/components/Page';
 
 export default function () {
     extend(app, 'mount', function (vnode) {

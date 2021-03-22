@@ -1,6 +1,6 @@
-import {extend} from 'flarum/extend';
-import EditUserModal from 'flarum/components/EditUserModal';
-import Stream from 'flarum/utils/Stream';
+import {extend} from 'flarum/common/extend';
+import EditUserModal from 'flarum/forum/components/EditUserModal';
+import Stream from 'flarum/common/utils/Stream';
 
 export default function () {
     extend(EditUserModal.prototype, 'oninit', function () {

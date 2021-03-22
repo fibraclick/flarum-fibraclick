@@ -23,13 +23,13 @@ app.initializers.add('botfactoryit/fibraclick', () => {
             label: 'Ads - Posts interval',
             type: 'number'
         })
-        .registerSetting(function() {
+        .registerSetting(function () {
             return <div className="Form-group">
                 <label>Ads - Between posts content</label>
                 <textarea className="FormControl" bidi={this.setting('fibraclick.ads.betweenPosts')}></textarea>
             </div>;
         })
-        .registerSetting(function() {
+        .registerSetting(function () {
             return <div className="Form-group">
                 <label>Ads - Sidebar</label>
                 <textarea className="FormControl" bidi={this.setting('fibraclick.ads.sidebar')}></textarea>

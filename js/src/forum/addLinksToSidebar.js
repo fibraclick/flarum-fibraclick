@@ -1,6 +1,6 @@
-import LinkButton from 'flarum/components/LinkButton';
+import LinkButton from 'flarum/common/components/LinkButton';
 
-export default function(items) {
+export default function (items) {
     items.add('wiki',
         LinkButton.component({
             href: 'https://fibra.click/?utm_source=fibraclick&utm_medium=referral&utm_campaign=navlinks',

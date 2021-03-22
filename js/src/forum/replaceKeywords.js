@@ -39,20 +39,19 @@ const mappings = {
 // https://stackoverflow.com/a/18622606/1633924
 const regex = new RegExp('\\b(' + Object.keys(mappings).join('|') + ')\\b(?![^<]*>|[^<>]*</[^p])', 'gi');
 
-export default function() {
-    if (app.forum.attribute('fibraclick.highlightKeywords') != '1') {
+export default function () {
+    if (app.forum.attribute('fibraclick.highlightKeywords') !== '1') {
         return;
     }
 
     this.attrs.post.data.attributes.contentHtml = this.attrs.post.data.attributes.contentHtml
-            .replace(regex, (match) => {
-                let link = mappings[match.toLowerCase()];
+        .replace(regex, (match) => {
+            let link = mappings[match.toLowerCase()];
 
-                if (link) {
-                    return `<a class="wiki" target="_blank" href="${link}">${match}</a>`;
-                }
-                else {
-                    return match;
-                }
-            });
+            if (link) {
+                return `<a class="wiki" target="_blank" href="${link}">${match}</a>`;
+            } else {
+                return match;
+            }
+        });
 }

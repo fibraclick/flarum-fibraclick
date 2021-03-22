@@ -1,8 +1,8 @@
 import app from 'flarum/app';
-import { extend } from 'flarum/extend';
+import {extend} from 'flarum/common/extend';
 import * as Klaro from 'klaro/dist/klaro-no-translations';
 
-export default function() {
+export default function () {
     extend(app, 'mount', function () {
         window.klaro = Klaro;
 

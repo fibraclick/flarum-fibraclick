@@ -1,11 +1,11 @@
 import app from 'flarum/app';
-import {extend, override} from 'flarum/extend';
-import CommentPost from 'flarum/components/CommentPost';
-import IndexPage from 'flarum/components/IndexPage';
-import WelcomeHero from 'flarum/components/WelcomeHero';
+import {extend, override} from 'flarum/common/extend';
+import CommentPost from 'flarum/forum/components/CommentPost';
+import IndexPage from 'flarum/forum/components/IndexPage';
+import WelcomeHero from 'flarum/forum/components/WelcomeHero';
 import QuickLinksComponent from './components/QuickLinksComponent';
-import User from 'flarum/models/User';
-import Model from 'flarum/Model';
+import User from 'flarum/common/models/User';
+import Model from 'flarum/common/Model';
 import replaceKeywords from './replaceKeywords';
 import addLinksToSidebar from './addLinksToSidebar';
 import addTagsToSidebar from './addTagsToSidebar';

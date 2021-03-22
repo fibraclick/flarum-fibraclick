@@ -1,5 +1,5 @@
-import TagLinkButton from 'flarum/tags/components/TagLinkButton';
-import Separator from 'flarum/components/Separator';
+import TagLinkButton from 'flarum/tags/forum/components/TagLinkButton';
+import Separator from 'flarum/common/components/Separator';
 import sortTags from 'flarum/tags/utils/sortTags';
 
 export default function addTagsToSidebar(items) {
@@ -13,7 +13,7 @@ export default function addTagsToSidebar(items) {
 
     items.remove('moreTags');
 
-    // https://github.com/flarum/tags/blob/v0.1.0-beta.15/js/src/forum/addTagList.js
+    // https://github.com/flarum/tags/blob/v0.1.0-beta.16/js/src/forum/addTagList.js
     const params = app.search.stickyParams();
     const tags = app.store.all('tags');
     const currentTag = this.currentTag();

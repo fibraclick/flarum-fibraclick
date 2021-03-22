@@ -7,7 +7,7 @@
     "type": "flarum-extension",
     "license": "MIT",
     "require": {
-        "flarum/core": ">=0.1.0-beta.15 <0.1.0-beta.16",
+        "flarum/core": ">=0.1.0-beta.16 <0.1.0-beta.17",
         "guzzlehttp/guzzle": "^7.2"
     },
     "authors": [
@@ -29,7 +29,10 @@
                 "image": "icon.png",
                 "backgroundColor": "#3fc160",
                 "color": "#ffffff"
-            }
+            },
+            "optional-dependencies": [
+                "flarum/tags"
+            ]
         },
         "flagrow": {
             "discuss": ""

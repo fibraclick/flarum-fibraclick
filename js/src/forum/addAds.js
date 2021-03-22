@@ -1,10 +1,10 @@
-import { extend } from 'flarum/extend';
+import {extend} from 'flarum/common/extend';
 import app from 'flarum/app';
-import PostStream from 'flarum/components/PostStream';
-import IndexPage from 'flarum/components/IndexPage';
+import PostStream from 'flarum/forum/components/PostStream';
+import IndexPage from 'flarum/forum/components/IndexPage';
 
-export default function() {
-    extend(PostStream.prototype, 'view', function(component) {
+export default function () {
+    extend(PostStream.prototype, 'view', function (component) {
         if (app.forum.attribute('fibraclick.ads.show') !== '1') {
             return;
         }
@@ -41,7 +41,7 @@ export default function() {
     extend(PostStream.prototype, 'oncreate', evalAdsJs);
     extend(PostStream.prototype, 'onupdate', evalAdsJs);
 
-    extend(IndexPage.prototype, 'sidebarItems', function(items) {
+    extend(IndexPage.prototype, 'sidebarItems', function (items) {
         const advertisement = app.forum.attribute('fibraclick.ads.sidebar');
 
         if (advertisement && !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
