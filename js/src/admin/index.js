@@ -56,6 +56,16 @@ app.initializers.add('botfactoryit/fibraclick', () => {
             type: 'text'
         })
         .registerSetting({
+            setting: 'fibraclick.telegram.flagsEnabled',
+            label: 'Telegram - Enabled flags posting',
+            type: 'boolean'
+        })
+        .registerSetting({
+            setting: 'fibraclick.telegram.flagsChannel',
+            label: 'Telegram - Flags channel',
+            type: 'text'
+        })
+        .registerSetting({
             setting: 'fibraclick.flair.show',
             label: 'Flair - Show',
             type: 'boolean'

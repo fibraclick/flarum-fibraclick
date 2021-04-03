@@ -5,6 +5,7 @@ namespace BotFactory\FibraClick;
 use BotFactory\FibraClick\Extenders\BindQueueFailer;
 use BotFactory\FibraClick\Listeners\ContentListener;
 use BotFactory\FibraClick\Listeners\DiscussionStartedListener;
+use BotFactory\FibraClick\Listeners\FlagDeleted;
 use BotFactory\FibraClick\Listeners\UserSavingListener;
 use BotFactory\FibraClick\Listeners\UserRegisteredListener;
 use BotFactory\FibraClick\Serializers\AddFlairFields;
@@ -12,6 +13,7 @@ use Flarum\Api\Controller\ShowDiscussionController;
 use Flarum\Api\Serializer\UserSerializer;
 use Flarum\Discussion\Event\Started;
 use Flarum\Extend;
+use Flarum\Flags\Event\Deleting;
 use Flarum\User\Event\Registered;
 use Flarum\User\Event\Saving;
 
@@ -43,8 +45,16 @@ return [
         ->addInclude('user'),
 
     (new Extend\ApiSerializer(UserSerializer::class))
-        ->mutate(AddFlairFields::class),
+        ->attributes(AddFlairFields::class),
 
     (new Extend\Event())
-        ->listen(Saving::class, UserSavingListener::class)
+        ->listen(Saving::class, UserSavingListener::class),
+
+    // listen to flag deletion
+    (new Extend\Event())
+        ->listen(Deleting::class, FlagDeleted::class),
+
+    // Observe flag creation
+    (new Extend\ServiceProvider())
+        ->register(ServiceProvider::class)
 ];
