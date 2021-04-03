@@ -33,7 +33,9 @@ const mappings = {
     hlog: 'https://fibra.click/hlog/',
     qln: 'https://fibra.click/hlog/',
     'piano aree grigie': 'https://fibra.click/piano-bul/#il-piano-aree-grigie',
-    fibercop: 'https://fibra.click/fibercop/'
+    fibercop: 'https://fibra.click/fibercop/',
+    arlo: 'https://fibra.click/fibercop/#architettura',
+    cro: 'https://fibra.click/fibercop/#architettura'
 };
 
 // https://stackoverflow.com/a/18622606/1633924
