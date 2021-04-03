@@ -9,6 +9,7 @@ use Flarum\Http\UrlGenerator;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\User\User;
 use GuzzleHttp\Client;
+use Psr\Log\LoggerInterface;
 
 class SendFlagToTelegramJob
 {
@@ -27,7 +28,7 @@ class SendFlagToTelegramJob
         $this->deletedBy = $deletedBy;
     }
 
-    public function handle(SettingsRepositoryInterface $settings, UrlGenerator $url)
+    public function handle(SettingsRepositoryInterface $settings, UrlGenerator $url, LoggerInterface $logger)
     {
         $token = $settings->get('fibraclick.telegram.token');
         $channel = $settings->get('fibraclick.telegram.flagsChannel');
@@ -42,10 +43,6 @@ class SendFlagToTelegramJob
             'base_uri' => 'https://api.telegram.org/bot' . $token . '/',
         ]);
 
-        if ($channel[0] != "@") {
-            $channel = "@" . $channel;
-        }
-
         if ($this->deletedBy == null) {
             $response = $client->post('sendMessage', [
                 'json' => [
@@ -57,6 +54,8 @@ class SendFlagToTelegramJob
             ]);
 
             $messageId = json_decode($response->getBody())->result->message_id;
+
+            $logger->info(sprintf("Sent flag to Telegram, message ID: %s", $messageId));
 
             $this->flag->telegram_message_id = $messageId;
             $this->flag->save();
