@@ -8,12 +8,14 @@ use BotFactory\FibraClick\Listeners\DiscussionStartedListener;
 use BotFactory\FibraClick\Listeners\FlagDeleted;
 use BotFactory\FibraClick\Listeners\UserSavingListener;
 use BotFactory\FibraClick\Listeners\UserRegisteredListener;
+use BotFactory\FibraClick\Middlewares\AuthHeaderMiddleware;
 use BotFactory\FibraClick\Serializers\AddFlairFields;
 use Flarum\Api\Controller\ShowDiscussionController;
 use Flarum\Api\Serializer\UserSerializer;
 use Flarum\Discussion\Event\Started;
 use Flarum\Extend;
 use Flarum\Flags\Event\Deleting;
+use Flarum\Http\Middleware\AuthenticateWithSession;
 use Flarum\User\Event\Registered;
 use Flarum\User\Event\Saving;
 
@@ -56,5 +58,15 @@ return [
 
     // Observe flag creation
     (new Extend\ServiceProvider())
-        ->register(ServiceProvider::class)
+        ->register(ServiceProvider::class),
+
+    // Add X-Authenticated header
+    (new Extend\Middleware('forum'))
+        ->insertAfter(AuthenticateWithSession::class, AuthHeaderMiddleware::class),
+
+    (new Extend\Middleware('admin'))
+        ->insertAfter(AuthenticateWithSession::class, AuthHeaderMiddleware::class),
+
+    (new Extend\Middleware('api'))
+        ->insertAfter(AuthenticateWithSession::class, AuthHeaderMiddleware::class)
 ];
