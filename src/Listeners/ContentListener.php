@@ -75,13 +75,13 @@ class ContentListener
     window.resumeBasicAds = function() {
         console.log('Resuming basic ads...');
         (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;
-    }
+    };
     
     window.resumePersonalizedAds = function() {
         console.log('Resuming personalized ads...');
         (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;
         (adsbygoogle=window.adsbygoogle||[]).requestNonPersonalizedAds=0;
-    }
+    };
 </script>
 EOT;
     }

@@ -24,8 +24,8 @@ export default function () {
                     title: 'Annunci di base',
                     purposes: ['Pubblicità'],
                     callback: (consent) => {
-                        if (consent) {
-                            window.resumeBasicAds?.call();
+                        if (consent && window.resumeBasicAds) {
+                            window.resumeBasicAds.call();
                         }
                     }
                 },
@@ -34,8 +34,8 @@ export default function () {
                     title: 'Annunci personalizzati',
                     purposes: ['Pubblicità'],
                     callback: (consent) => {
-                        if (consent) {
-                            window.resumePersonalizedAds?.call();
+                        if (consent && window.resumePersonalizedAds) {
+                            window.resumePersonalizedAds.call();
                         }
                     }
                 }
