@@ -27,14 +27,10 @@ class SendDiscussionToTelegramJob
         $token = $settings->get('fibraclick.telegram.token');
         $channel = $settings->get('fibraclick.telegram.discussionsChannel');
 
-        if ($channel[0] != "@") {
-            $channel = "@" . $channel;
-        }
-
         $title = htmlspecialchars($this->discussion->title);
         $author = $this->discussion->user->username;
         $url = $urlGenerator->to('forum')->route('discussion', ['id' => $this->discussion->id]);
-        $tags = $this->discussion->tags->map([$this, 'mapTag'])->implode(' ');
+        $tags = $this->discussion->tags()->get()->map([$this, 'mapTag'])->implode(' ');
 
         if ($tags != "") {
             $tagLine = "\n🏷️ " . $tags;
