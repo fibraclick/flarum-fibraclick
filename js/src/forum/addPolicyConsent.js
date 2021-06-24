@@ -13,9 +13,9 @@ export default function () {
                     {
                         [
                             'Accetto l\'',
-                            <Link target="_blank" href={app.route('page', {id: 1})}>Informativa sulla privacy</Link>,
+                            <Link target="_blank" href="https://fibra.click/privacy.pdf">Informativa sulla privacy</Link>,
                             ' e i ',
-                            <Link target="_blank" href={app.route('page', {id: 2})}>Termini d'uso</Link>
+                            <Link target="_blank" href="https://fibra.click/termini.pdf">Termini e condizioni</Link>
                         ]
                     }
                 </label>
