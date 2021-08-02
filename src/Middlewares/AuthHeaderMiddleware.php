@@ -4,6 +4,7 @@
 namespace FibraClick\Middlewares;
 
 
+use Flarum\Http\RequestUtil;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -15,7 +16,7 @@ class AuthHeaderMiddleware implements MiddlewareInterface
     {
         $response = $handler->handle($request);
 
-        $loggedIn = !$request->getAttribute('actor')->isGuest();
+        $loggedIn = !RequestUtil::getActor($request)->isGuest();
 
         return $response->withHeader('X-Authenticated', (int)$loggedIn);
     }
