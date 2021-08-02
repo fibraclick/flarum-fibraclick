@@ -1,10 +1,10 @@
 <?php
 
 
-namespace BotFactory\FibraClick\Listeners;
+namespace FibraClick\Listeners;
 
 
-use BotFactory\FibraClick\Jobs\SendFlagToTelegramJob;
+use FibraClick\Jobs\SendFlagToTelegramJob;
 use Flarum\Flags\Event\Deleting;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Contracts\Queue\Queue;

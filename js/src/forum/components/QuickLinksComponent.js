@@ -3,6 +3,8 @@ import Link from 'flarum/common/components/Link';
 
 export default class QuickLinksComponent extends Component {
     oninit() {
+        super.oninit();
+
         this.links = [
             {
                 icon: 'fas fa-align-left',

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace BotFactory\FibraClick\Serializers;
+namespace FibraClick\Serializers;
 
 
 class AddFlairFields

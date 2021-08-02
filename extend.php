@@ -1,15 +1,15 @@
 <?php
 
-namespace BotFactory\FibraClick;
+namespace FibraClick;
 
-use BotFactory\FibraClick\Extenders\BindQueueFailer;
-use BotFactory\FibraClick\Listeners\ContentListener;
-use BotFactory\FibraClick\Listeners\DiscussionStartedListener;
-use BotFactory\FibraClick\Listeners\FlagDeleted;
-use BotFactory\FibraClick\Listeners\UserSavingListener;
-use BotFactory\FibraClick\Listeners\UserRegisteredListener;
-use BotFactory\FibraClick\Middlewares\AuthHeaderMiddleware;
-use BotFactory\FibraClick\Serializers\AddFlairFields;
+use FibraClick\Extenders\BindQueueFailer;
+use FibraClick\Listeners\ContentListener;
+use FibraClick\Listeners\DiscussionStartedListener;
+use FibraClick\Listeners\FlagDeleted;
+use FibraClick\Listeners\UserSavingListener;
+use FibraClick\Listeners\UserRegisteredListener;
+use FibraClick\Middlewares\AuthHeaderMiddleware;
+use FibraClick\Serializers\AddFlairFields;
 use Flarum\Api\Controller\ShowDiscussionController;
 use Flarum\Api\Serializer\UserSerializer;
 use Flarum\Discussion\Event\Started;

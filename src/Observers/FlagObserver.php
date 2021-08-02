@@ -1,10 +1,10 @@
 <?php
 
 
-namespace BotFactory\FibraClick\Observers;
+namespace FibraClick\Observers;
 
 
-use BotFactory\FibraClick\Jobs\SendFlagToTelegramJob;
+use FibraClick\Jobs\SendFlagToTelegramJob;
 use Flarum\Flags\Flag;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Contracts\Queue\Queue;

@@ -1,8 +1,8 @@
 import app from 'flarum/app';
 
-app.initializers.add('botfactoryit/fibraclick', () => {
+app.initializers.add('fibraclick-tweaks', () => {
     app.extensionData
-        .for('botfactoryit-fibraclick')
+        .for('fibraclick-tweaks')
         .registerSetting({
             setting: 'fibraclick.highlightKeywords',
             label: 'Highlight keywords',

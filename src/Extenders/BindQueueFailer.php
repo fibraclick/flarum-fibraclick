@@ -1,7 +1,7 @@
 <?php
 
 
-namespace BotFactory\FibraClick\Extenders;
+namespace FibraClick\Extenders;
 
 
 use Flarum\Extend\ExtenderInterface;

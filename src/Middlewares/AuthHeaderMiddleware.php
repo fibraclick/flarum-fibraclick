@@ -1,7 +1,7 @@
 <?php
 
 
-namespace BotFactory\FibraClick\Middlewares;
+namespace FibraClick\Middlewares;
 
 
 use Psr\Http\Message\ResponseInterface;
@@ -17,8 +17,6 @@ class AuthHeaderMiddleware implements MiddlewareInterface
 
         $loggedIn = !$request->getAttribute('actor')->isGuest();
 
-        $response = $response->withHeader('X-Authenticated', (int)$loggedIn);
-
-        return $response;
+        return $response->withHeader('X-Authenticated', (int)$loggedIn);
     }
 }

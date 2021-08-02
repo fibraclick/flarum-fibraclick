@@ -1,10 +1,10 @@
 <?php
 
 
-namespace BotFactory\FibraClick;
+namespace FibraClick;
 
 
-use BotFactory\FibraClick\Observers\FlagObserver;
+use FibraClick\Observers\FlagObserver;
 use Flarum\Flags\Flag;
 use Flarum\Foundation\AbstractServiceProvider;
 

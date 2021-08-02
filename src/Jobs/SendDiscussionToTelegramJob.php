@@ -1,7 +1,7 @@
 <?php
 
 
-namespace BotFactory\FibraClick\Jobs;
+namespace FibraClick\Jobs;
 
 
 use Flarum\Discussion\Discussion;

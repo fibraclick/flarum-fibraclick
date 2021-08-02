@@ -16,7 +16,7 @@ import addPolicyConsent from "./addPolicyConsent";
 import addPostHeaderItems from "./addPostHeaderItems";
 import extendUserModal from "./extendUserModal";
 
-app.initializers.add('botfactoryit/fibraclick', () => {
+app.initializers.add('fibraclick-flarum-tweaks', () => {
     // Enable keywords feature
     extend(CommentPost.prototype, 'oninit', replaceKeywords);
 

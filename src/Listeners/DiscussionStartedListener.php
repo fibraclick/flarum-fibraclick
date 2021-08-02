@@ -1,10 +1,10 @@
 <?php
 
 
-namespace BotFactory\FibraClick\Listeners;
+namespace FibraClick\Listeners;
 
 
-use BotFactory\FibraClick\Jobs\SendDiscussionToTelegramJob;
+use FibraClick\Jobs\SendDiscussionToTelegramJob;
 use Flarum\Discussion\Discussion;
 use Flarum\Discussion\Event\Started;
 use Flarum\Settings\SettingsRepositoryInterface;
