@@ -13,7 +13,6 @@
         "build": "webpack --mode production"
     },
     "devDependencies": {
-        "flarum": "^1.0.0",
         "flarum-tsconfig": "^1.0.0"
     }
 }

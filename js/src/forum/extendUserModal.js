@@ -1,5 +1,5 @@
 import {extend} from 'flarum/common/extend';
-import EditUserModal from 'flarum/forum/components/EditUserModal';
+import EditUserModal from 'flarum/common/components/EditUserModal';
 import Stream from 'flarum/common/utils/Stream';
 
 export default function () {

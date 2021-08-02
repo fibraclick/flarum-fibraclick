@@ -13,7 +13,7 @@ export default function addTagsToSidebar(items) {
 
     items.remove('moreTags');
 
-    // https://github.com/flarum/tags/blob/v0.1.0-beta.16/js/src/forum/addTagList.js
+    // https://github.com/flarum/tags/blob/v1.0.3/js/src/forum/addTagList.js
     const params = app.search.stickyParams();
     const tags = app.store.all('tags');
     const currentTag = this.currentTag();

@@ -2,8 +2,8 @@ import Component from 'flarum/common/Component';
 import Link from 'flarum/common/components/Link';
 
 export default class QuickLinksComponent extends Component {
-    oninit() {
-        super.oninit();
+    oninit(vnode) {
+        super.oninit(vnode);
 
         this.links = [
             {
