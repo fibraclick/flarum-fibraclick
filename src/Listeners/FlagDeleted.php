@@ -4,6 +4,7 @@
 namespace FibraClick\Listeners;
 
 
+use FibraClick\Jobs\SendDiscussionToTelegramJob;
 use FibraClick\Jobs\SendFlagToTelegramJob;
 use Flarum\Flags\Event\Deleting;
 use Flarum\Settings\SettingsRepositoryInterface;
@@ -35,6 +36,10 @@ class FlagDeleted
 
         $this->queue->push(
             new SendFlagToTelegramJob($event->flag, $event->actor)
+        );
+
+        $this->queue->push(
+            new SendDiscussionToTelegramJob($event->flag->post->discussion)
         );
     }
 }
