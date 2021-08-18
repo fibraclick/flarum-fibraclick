@@ -34,7 +34,7 @@ class SendFlagToTelegramJob
         $token = $settings->get('fibraclick.telegram.token');
         $channel = $settings->get('fibraclick.telegram.flagsChannel');
 
-        $as = $this->flag->type == 'approval' ? $this->get_asn($logger, $this->flag->post->ip_address) : null;
+        $as = $this->flag->type == 'approval' ? $this->getAS($logger, $this->flag->post->ip_address) : null;
 
         $text = Telegram::buildFlagMessage($url, $this->flag, $this->deletedBy, $as);
 
@@ -75,7 +75,7 @@ class SendFlagToTelegramJob
         }
     }
 
-    private function get_asn(LoggerInterface $logger, $ip_address): ?string
+    private function getAS(LoggerInterface $logger, $ip_address): ?string
     {
         $client = new Client([
             'base_uri' => 'http://ip-api.com/csv/',
