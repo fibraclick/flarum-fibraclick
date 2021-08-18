@@ -21,7 +21,7 @@ class Telegram
             'discussion',
             [
                 'id' => $flag->post->discussion->id,
-                'near' => $flag->post->id
+                'near' => $flag->post->number
             ]
         );
 
