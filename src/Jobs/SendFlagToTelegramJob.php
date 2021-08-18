@@ -9,6 +9,7 @@ use Flarum\Http\UrlGenerator;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\User\User;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use Psr\Log\LoggerInterface;
 
 class SendFlagToTelegramJob
@@ -33,7 +34,9 @@ class SendFlagToTelegramJob
         $token = $settings->get('fibraclick.telegram.token');
         $channel = $settings->get('fibraclick.telegram.flagsChannel');
 
-        $text = Telegram::buildFlagMessage($url, $this->flag, $this->deletedBy);
+        $as = $this->flag->type == 'approval' ? $this->get_asn($logger, $this->flag->post->ip_address) : null;
+
+        $text = Telegram::buildFlagMessage($url, $this->flag, $this->deletedBy, $as);
 
         if ($text == null) {
             return;
@@ -70,5 +73,25 @@ class SendFlagToTelegramJob
                 ],
             ]);
         }
+    }
+
+    private function get_asn(LoggerInterface $logger, $ip_address): ?string
+    {
+        $client = new Client([
+            'base_uri' => 'http://ip-api.com/csv/',
+        ]);
+
+        try {
+            $response = $client->get($ip_address . '?fields=status,countryCode,as');
+            $parts = explode(',', $response->getBody()->getContents());
+            if ($parts[0] == 'success') {
+                $as = trim($parts[2], '"');
+                return sprintf('%s (%s)', $as, $parts[1]);
+            }
+        } catch (GuzzleException $e) {
+            $logger->error($e);
+        }
+
+        return null;
     }
 }

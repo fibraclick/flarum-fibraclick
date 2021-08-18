@@ -10,7 +10,7 @@ use Flarum\User\User;
 
 class Telegram
 {
-    public static function buildFlagMessage(UrlGenerator $url, Flag $flag, User $deletedBy = null): ?string
+    public static function buildFlagMessage(UrlGenerator $url, Flag $flag, ?User $deletedBy, ?string $as): ?string
     {
         $discussionUrl = $url->to('forum')->route(
             'discussion',
@@ -45,6 +45,9 @@ class Telegram
         } else if ($flag->type == 'approval') {
             $text = sprintf("⏳ Messaggio di <i>%s</i> in attesa di approvazione\n\n", $flag->post->user->username);
             $text .= sprintf("<i>Discussione</i>: <a href='%s'>%s</a>\n", $discussionUrl, htmlspecialchars($flag->post->discussion->title));
+            if ($as != null) {
+                $text .= sprintf("<i>Rete:</i> %s\n", htmlspecialchars($as));
+            }
             $text .= sprintf("\n<a href='%s'><strong>Vai al messaggio (#%d)</strong></a>", $postUrl, $flag->post->number);
 
             if ($deletedBy != null) {
