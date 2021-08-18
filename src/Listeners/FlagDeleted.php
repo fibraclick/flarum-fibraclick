@@ -38,8 +38,10 @@ class FlagDeleted
             new SendFlagToTelegramJob($event->flag, $event->actor)
         );
 
-        $this->queue->push(
-            new SendDiscussionToTelegramJob($event->flag->post->discussion)
-        );
+        if ($event->flag->type == 'user') {
+            $this->queue->push(
+                new SendDiscussionToTelegramJob($event->flag->post->discussion)
+            );
+        }
     }
 }
