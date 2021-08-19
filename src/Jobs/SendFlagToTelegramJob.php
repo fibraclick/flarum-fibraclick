@@ -86,7 +86,7 @@ class SendFlagToTelegramJob
             $body = $response->getBody()->getContents();
             $parts = explode(',', $body);
             if ($parts[0] == 'success') {
-                $as = trim($parts[2], '"');
+                $as = trim(trim($parts[2]), '"');
                 return sprintf('%s (%s)', $as, $parts[1]);
             } else {
                 $logger->error('IP lookup for ' . $ip_address . ' failed: ' . $body);
