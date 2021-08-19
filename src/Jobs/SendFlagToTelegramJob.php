@@ -83,10 +83,13 @@ class SendFlagToTelegramJob
 
         try {
             $response = $client->get($ip_address . '?fields=status,countryCode,as');
-            $parts = explode(',', $response->getBody()->getContents());
+            $body = $response->getBody()->getContents();
+            $parts = explode(',', $body);
             if ($parts[0] == 'success') {
                 $as = trim($parts[2], '"');
                 return sprintf('%s (%s)', $as, $parts[1]);
+            } else {
+                $logger->error('IP lookup for ' . $ip_address . ' failed: ' . $body);
             }
         } catch (GuzzleException $e) {
             $logger->error($e);
