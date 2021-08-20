@@ -29,7 +29,7 @@ app.initializers.add('fibraclick-flarum-tweaks', () => {
     extend(IndexPage.prototype, 'navItems', addLinksToSidebar);
 
     // Add secondary tags to sidebar
-    extend(IndexPage.prototype, 'navItems', addTagsToSidebar);
+    //extend(IndexPage.prototype, 'navItems', addTagsToSidebar);
 
     addAnalyticsCompat();
 
