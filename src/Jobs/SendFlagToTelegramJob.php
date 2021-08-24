@@ -77,17 +77,20 @@ class SendFlagToTelegramJob
 
     private function getAS(LoggerInterface $logger, $ip_address): ?string
     {
-        $client = new Client([
-            'base_uri' => 'http://ip-api.com/csv/',
-        ]);
+        $client = new Client();
 
         try {
-            $response = $client->get($ip_address . '?fields=status,countryCode,as');
+            $response = $client->get('http://ip-api.com/csv/' . $ip_address . '?fields=status,countryCode,as');
             $body = $response->getBody()->getContents();
             $parts = explode(',', $body);
             if ($parts[0] == 'success') {
                 $as = trim(trim($parts[2]), '"');
-                return sprintf('%s (%s)', $as, $parts[1]);
+                $is_ipv6 = strpos($ip_address, ':') !== false;
+                if ($is_ipv6) {
+                    return sprintf('%s (%s, IPv6)', $as, $parts[1]);
+                } else {
+                    return sprintf('%s (%s)', $as, $parts[1]);
+                }
             } else {
                 $logger->error('IP lookup for ' . $ip_address . ' failed: ' . $body);
             }
