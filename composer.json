@@ -26,7 +26,8 @@
                 "color": "#ffffff"
             },
             "optional-dependencies": [
-                "flarum/tags"
+                "flarum/tags",
+                "flarum/flags"
             ]
         },
         "flagrow": {

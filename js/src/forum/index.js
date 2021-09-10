@@ -15,6 +15,7 @@ import addAnalyticsCompat from "./addAnalyticsCompat";
 import addPolicyConsent from "./addPolicyConsent";
 import addPostHeaderItems from "./addPostHeaderItems";
 import extendUserModal from "./extendUserModal";
+import moveFlagButton from "./moveFlagButton";
 
 app.initializers.add('fibraclick-flarum-tweaks', () => {
     // Enable keywords feature
@@ -45,4 +46,6 @@ app.initializers.add('fibraclick-flarum-tweaks', () => {
     extend(CommentPost.prototype, 'headerItems', addPostHeaderItems);
 
     extendUserModal();
+
+    moveFlagButton();
 });
