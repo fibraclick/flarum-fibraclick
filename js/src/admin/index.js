@@ -66,6 +66,16 @@ app.initializers.add('fibraclick-tweaks', () => {
             type: 'text'
         })
         .registerSetting({
+            setting: 'fibraclick.telegram.approvalsEnabled',
+            label: 'Telegram - Enabled approvals posting',
+            type: 'boolean'
+        })
+        .registerSetting({
+            setting: 'fibraclick.telegram.approvalsChannel',
+            label: 'Telegram - Approvals channel',
+            type: 'text'
+        })
+        .registerSetting({
             setting: 'fibraclick.flair.show',
             label: 'Flair - Show',
             type: 'boolean'

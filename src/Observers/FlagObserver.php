@@ -29,7 +29,11 @@ class FlagObserver
 
     public function created(Flag $flag)
     {
-        if (!(bool)$this->settings->get('fibraclick.telegram.flagsEnabled', false)) {
+        $isApproval = $flag->type == 'approval';
+
+        if ($isApproval && !(bool)$this->settings->get('fibraclick.telegram.approvalsEnabled', false)) {
+            return;
+        } else if (!(bool)$this->settings->get('fibraclick.telegram.flagsEnabled', false)) {
             return;
         }
 

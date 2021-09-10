@@ -31,10 +31,17 @@ class SendFlagToTelegramJob
 
     public function handle(SettingsRepositoryInterface $settings, UrlGenerator $url, LoggerInterface $logger)
     {
-        $token = $settings->get('fibraclick.telegram.token');
-        $channel = $settings->get('fibraclick.telegram.flagsChannel');
+        $isApproval = $this->flag->type == 'approval';
 
-        $as = $this->flag->type == 'approval' ? $this->getAS($logger, $this->flag->post->ip_address) : null;
+        $token = $settings->get('fibraclick.telegram.token');
+
+        $channel = $isApproval
+            ? $settings->get('fibraclick.telegram.approvalsChannel')
+            : $settings->get('fibraclick.telegram.flagsChannel');
+
+        $as = $isApproval
+            ? $this->getAS($logger, $this->flag->post->ip_address)
+            : null;
 
         $text = Telegram::buildFlagMessage($url, $this->flag, $this->deletedBy, $as);
 

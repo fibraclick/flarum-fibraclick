@@ -6,8 +6,10 @@ namespace FibraClick\Listeners;
 
 use FibraClick\Jobs\SendDiscussionToTelegramJob;
 use FibraClick\Jobs\SendFlagToTelegramJob;
+use Flarum\Discussion\Discussion;
 use Flarum\Flags\Event\Deleting;
 use Flarum\Settings\SettingsRepositoryInterface;
+use Flarum\User\Guest;
 use Illuminate\Contracts\Queue\Queue;
 
 class FlagDeleted
@@ -30,7 +32,11 @@ class FlagDeleted
 
     public function handle(Deleting $event)
     {
-        if (!(bool)$this->settings->get('fibraclick.telegram.flagsEnabled', false)) {
+        $isApproval = $event->flag->type == 'approval';
+
+        if ($isApproval && !(bool)$this->settings->get('fibraclick.telegram.approvalsEnabled', false)) {
+            return;
+        } else if (!(bool)$this->settings->get('fibraclick.telegram.flagsEnabled', false)) {
             return;
         }
 
