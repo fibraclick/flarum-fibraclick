@@ -7,6 +7,7 @@ namespace FibraClick\Jobs;
 use Flarum\Discussion\Discussion;
 use Flarum\Http\UrlGenerator;
 use Flarum\Settings\SettingsRepositoryInterface;
+use Flarum\User\Guest;
 use GuzzleHttp\Client;
 
 
@@ -24,6 +25,12 @@ class SendDiscussionToTelegramJob
 
     public function handle(SettingsRepositoryInterface $settings, UrlGenerator $urlGenerator)
     {
+        $isPublic = Discussion::whereVisibleTo(new Guest)->where('id', $this->discussion->id)->exists();
+
+        if (!$isPublic) {
+            return;
+        }
+
         $token = $settings->get('fibraclick.telegram.token');
         $channel = $settings->get('fibraclick.telegram.discussionsChannel');
 
@@ -34,8 +41,7 @@ class SendDiscussionToTelegramJob
 
         if ($tags != "") {
             $tagLine = "\n🏷️ " . $tags;
-        }
-        else {
+        } else {
             $tagLine = "";
         }
 
@@ -54,7 +60,8 @@ class SendDiscussionToTelegramJob
         ]);
     }
 
-    public function mapTag($tag) {
+    public function mapTag($tag)
+    {
         return "#" . $tag->slug;
     }
 }
