@@ -17,6 +17,7 @@ import addPostHeaderItems from "./addPostHeaderItems";
 import extendUserModal from "./extendUserModal";
 import moveFlagButton from "./moveFlagButton";
 import fixLikeButtonPosition from "./fixLikeButtonPosition";
+import matchThemeColorToColorScheme from "./matchThemeColorToColorScheme";
 
 app.initializers.add('fibraclick-flarum-tweaks', () => {
     // Enable keywords feature
@@ -51,5 +52,7 @@ app.initializers.add('fibraclick-flarum-tweaks', () => {
     moveFlagButton();
 
     fixLikeButtonPosition();
+
+    matchThemeColorToColorScheme();
 }, -10);
 // priority added to override like button priority
