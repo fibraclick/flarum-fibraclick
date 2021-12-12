@@ -35,7 +35,9 @@ const mappings = {
     qln: 'https://fibra.click/hlog/',
     fibercop: 'https://fibra.click/fibercop/',
     arlo: 'https://fibra.click/fibercop/#architettura',
-    cro: 'https://fibra.click/fibercop/#architettura'
+    cro: 'https://fibra.click/fibercop/#architettura',
+    venditori: 'https://forum.fibra.click/groups',
+    rappresentanti: 'https://forum.fibra.click/groups',
 };
 
 // https://stackoverflow.com/a/18622606/1633924
