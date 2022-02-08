@@ -10,7 +10,6 @@ import replaceKeywords from './replaceKeywords';
 import addLinksToSidebar from './addLinksToSidebar';
 import addTagsToSidebar from './addTagsToSidebar';
 import addAds from "./addAds";
-import addCookieConsent from "./addCookieConsent";
 import addAnalyticsCompat from "./addAnalyticsCompat";
 import addPolicyConsent from "./addPolicyConsent";
 import addPostHeaderItems from "./addPostHeaderItems";
@@ -37,8 +36,6 @@ app.initializers.add('fibraclick-flarum-tweaks', () => {
     addAnalyticsCompat();
 
     addAds();
-
-    addCookieConsent();
 
     addPolicyConsent();
 

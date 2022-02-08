@@ -66,23 +66,8 @@ class ContentListener
     private function addAdSense()
     {
         $this->document->head[] = <<<EOT
+<script async type="text/javascript" src="//clickio.mgr.consensu.org/t/consent_225036.js"></script>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-    console.log('Pausing ads...');
-    (adsbygoogle=window.adsbygoogle||[]).requestNonPersonalizedAds=1;
-    (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=1;
-    
-    window.resumeBasicAds = function() {
-        console.log('Resuming basic ads...');
-        (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;
-    };
-    
-    window.resumePersonalizedAds = function() {
-        console.log('Resuming personalized ads...');
-        (adsbygoogle=window.adsbygoogle||[]).pauseAdRequests=0;
-        (adsbygoogle=window.adsbygoogle||[]).requestNonPersonalizedAds=0;
-    };
-</script>
 EOT;
     }
 
@@ -90,12 +75,11 @@ EOT;
     {
         $this->document->head[] = <<<EOT
 <script async src="https://www.googletagmanager.com/gtag/js?id=$trackingCode"></script>
-<script type="text/plain" data-type="text/javascript" data-name="analytics">
-    console.log('Resuming analytics...');
+<script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', '$trackingCode');
+    gtag('config', '$trackingCode', { 'anonymize_ip': true });
 </script>
 EOT;
 
