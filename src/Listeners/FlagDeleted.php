@@ -44,7 +44,7 @@ class FlagDeleted
             new SendFlagToTelegramJob($event->flag, $event->actor)
         );
 
-        if ($event->flag->type == 'approval') {
+        if ($event->flag->type == 'approval' && $event->flag->post->number == 1) {
             $this->queue->push(
                 new SendDiscussionToTelegramJob($event->flag->post->discussion)
             );
