@@ -43,7 +43,14 @@ class Telegram
 
             return $text;
         } else if ($flag->type == 'approval') {
-            $text = sprintf("⏳ Messaggio di <i>%s</i> in attesa di approvazione\n\n", $flag->post->user->username);
+            $userUrl = $url->to('forum')->route(
+                'user',
+                [
+                    'username' => $flag->post->user->username
+                ]
+            );
+
+            $text = sprintf("⏳ Messaggio di <a href='%s'>%s</a> in attesa di approvazione\n\n", $userUrl, $flag->post->user->username);
             $text .= sprintf("<i>Discussione</i>: <a href='%s'>%s</a>\n", $discussionUrl, htmlspecialchars($flag->post->discussion->title));
             if ($as != null) {
                 $text .= sprintf("<i>Rete:</i> %s\n", htmlspecialchars($as));
