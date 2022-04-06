@@ -25,8 +25,15 @@ class Telegram
             ]
         );
 
+        $userUrl = $url->to('forum')->route(
+            'user',
+            [
+                'username' => $flag->post->user->username
+            ]
+        );
+
         if ($flag->type == 'user') {
-            $text = sprintf("‼️ Messaggio di <i>%s</i> segnalato\n\n", $flag->post->user->username);
+            $text = sprintf("‼️ Messaggio di <a href='%s'>%s</a> segnalato\n\n", $userUrl, $flag->post->user->username);
             $text .= sprintf("<i>Discussione</i>: <a href='%s'>%s</a>\n", $discussionUrl, htmlspecialchars($flag->post->discussion->title));
             $text .= sprintf("<i>Segnalatore</i>: %s\n", $flag->user->username);
             $text .= sprintf("<i>Motivo</i>: %s\n", $flag->reason);
@@ -43,13 +50,6 @@ class Telegram
 
             return $text;
         } else if ($flag->type == 'approval') {
-            $userUrl = $url->to('forum')->route(
-                'user',
-                [
-                    'username' => $flag->post->user->username
-                ]
-            );
-
             $text = sprintf("⏳ Messaggio di <a href='%s'>%s</a> in attesa di approvazione\n\n", $userUrl, $flag->post->user->username);
             $text .= sprintf("<i>Discussione</i>: <a href='%s'>%s</a>\n", $discussionUrl, htmlspecialchars($flag->post->discussion->title));
             if ($as != null) {
