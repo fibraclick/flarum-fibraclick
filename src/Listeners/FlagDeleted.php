@@ -34,9 +34,9 @@ class FlagDeleted
     {
         $isApproval = $event->flag->type == 'approval';
 
-        if ($isApproval && !(bool)$this->settings->get('fibraclick.telegram.approvalsEnabled', false)) {
+        if ($isApproval && !$this->settings->get('fibraclick.telegram.approvalsEnabled', false)) {
             return;
-        } else if (!(bool)$this->settings->get('fibraclick.telegram.flagsEnabled', false)) {
+        } else if (!$this->settings->get('fibraclick.telegram.flagsEnabled', false)) {
             return;
         }
 

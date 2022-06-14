@@ -52,9 +52,16 @@ class Telegram
         } else if ($flag->type == 'approval') {
             $text = sprintf("⏳ Messaggio di <a href='%s'>%s</a> in attesa di approvazione\n\n", $userUrl, $flag->post->user->username);
             $text .= sprintf("<i>Discussione</i>: <a href='%s'>%s</a>\n", $discussionUrl, htmlspecialchars($flag->post->discussion->title));
+
             if ($as != null) {
                 $text .= sprintf("<i>Rete:</i> %s\n", htmlspecialchars($as));
             }
+
+            $tags = $flag->post->discussion->tags()->get()->map([self::class, 'mapTag'])->implode(', ');
+            if ($tags != "") {
+                $text .= sprintf("<i>Tag</i>: %s\n", $tags);
+            }
+
             $text .= sprintf("\n<a href='%s'><strong>Vai al messaggio (#%d)</strong></a>", $postUrl, $flag->post->number);
 
             if ($deletedBy != null) {
@@ -65,5 +72,10 @@ class Telegram
         }
 
         return null;
+    }
+
+    public static function mapTag($tag)
+    {
+        return $tag->name;
     }
 }

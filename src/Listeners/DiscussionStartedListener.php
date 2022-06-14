@@ -31,7 +31,7 @@ class DiscussionStartedListener
 
     public function handle(Started $event)
     {
-        if (!(bool)$this->settings->get('fibraclick.telegram.discussionsEnabled', false)) {
+        if (!$this->settings->get('fibraclick.telegram.discussionsEnabled', false)) {
             return;
         }
 
