@@ -23,8 +23,8 @@ app.initializers.add('fibraclick-flarum-tweaks', () => {
     extend(CommentPost.prototype, 'oninit', replaceKeywords);
 
     // Add quick links to the top
-    override(IndexPage.prototype, 'hero', function(original) {
-        return this.attrs.routeName === 'index'
+    override(IndexPage.prototype, 'hero', (original) => {
+        return app.current.get('routeName') === 'index'
             ? [WelcomeHero.component(), QuickLinksComponent.component()]
             : original();
     });
