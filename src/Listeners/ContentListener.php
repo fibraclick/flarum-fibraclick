@@ -51,6 +51,13 @@ class ContentListener
         if ($trackingCode != "") {
             $this->addAnalytics($trackingCode);
         }
+
+        $plausibleScriptDomain = $this->settings->get("fibraclick.plausible.scriptDomain");
+        $plausibleSiteDomain = $this->settings->get("fibraclick.plausible.siteDomain");
+
+        if ($plausibleScriptDomain != "" && $plausibleSiteDomain != "") {
+            $this->addPlausible($plausibleScriptDomain, $plausibleSiteDomain);
+        }
     }
 
     private function addThemeColor()
@@ -60,14 +67,14 @@ class ContentListener
 
     private function addFont()
     {
-        $this->document->head[] = '<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,600">';
+        $this->document->head[] = '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,600">';
     }
 
     private function addAdSense()
     {
         $this->document->head[] = <<<EOT
-<script async type="text/javascript" src="//clickio.mgr.consensu.org/t/consent_225036.js"></script>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async type="text/javascript" src="https://clickio.mgr.consensu.org/t/consent_225036.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 EOT;
     }
 
@@ -82,6 +89,12 @@ EOT;
     gtag('config', '$trackingCode', { 'anonymize_ip': true });
 </script>
 EOT;
+    }
 
+    private function addPlausible(string $plausibleScriptDomain, string $plausibleSiteDomain)
+    {
+        $this->document->head[] = <<<EOT
+<script defer data-domain="$plausibleSiteDomain" src="https://$plausibleScriptDomain/js/script.outbound-links.js"></script>
+EOT;
     }
 }

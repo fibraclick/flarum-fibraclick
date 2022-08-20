@@ -37,7 +37,9 @@ return [
         ->serializeToForum('fibraclick.ads.betweenPosts', 'fibraclick.ads.betweenPosts')
         ->serializeToForum('fibraclick.ads.sidebar', 'fibraclick.ads.sidebar')
         ->serializeToForum('fibraclick.analytics.trackingCode', 'fibraclick.analytics.trackingCode')
-        ->serializeToForum('fibraclick.flair.show', 'fibraclick.flair.show'),
+        ->serializeToForum('fibraclick.flair.show', 'fibraclick.flair.show')
+        ->serializeToForum('fibraclick.plausible.scriptDomain', 'fibraclick.plausible.scriptDomain')
+        ->serializeToForum('fibraclick.plausible.siteDomain', 'fibraclick.plausible.siteDomain'),
 
     new BindQueueFailer(),
 

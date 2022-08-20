@@ -41,6 +41,16 @@ app.initializers.add('fibraclick-tweaks', () => {
             type: 'text'
         })
         .registerSetting({
+            setting: 'fibraclick.plausible.scriptDomain',
+            label: 'Plausible Analytics - Script domain (leave empty to disable)',
+            type: 'text'
+        })
+        .registerSetting({
+            setting: 'fibraclick.plausible.siteDomain',
+            label: 'Plausible Analytics - Site domain (leave empty to disable)',
+            type: 'text'
+        })
+        .registerSetting({
             setting: 'fibraclick.telegram.token',
             label: 'Telegram - Token',
             type: 'text'
