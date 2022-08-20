@@ -38,6 +38,11 @@ const mappings = {
     cro: 'https://fibra.click/fibercop/#architettura',
     venditori: 'https://forum.fibra.click/groups',
     rappresentanti: 'https://forum.fibra.click/groups',
+    tcp: 'https://fibra.click/tcp/',
+    bbr: 'https://fibra.click/tcp/',
+    bbrv1: 'https://fibra.click/tcp/',
+    bbrv2: 'https://fibra.click/tcp/',
+    cubic: 'https://fibra.click/tcp/'
 };
 
 // https://stackoverflow.com/a/18622606/1633924
