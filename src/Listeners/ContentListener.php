@@ -42,7 +42,9 @@ class ContentListener
         $this->addThemeColor();
         $this->addFont();
 
-        $this->addConsent();
+        if ($this->settings->get("fibraclick.consent") == '1') {
+            $this->addConsent();
+        }
 
         if ($this->settings->get("fibraclick.ads.load") == '1') {
             $this->addAdSense();
@@ -72,7 +74,8 @@ class ContentListener
         $this->document->head[] = '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,600">';
     }
 
-    private function addConsent() {
+    private function addConsent()
+    {
         $this->document->head[] = <<<EOT
         <script async type="text/javascript" src="https://clickio.mgr.consensu.org/t/consent_225036.js"></script>
 EOT;

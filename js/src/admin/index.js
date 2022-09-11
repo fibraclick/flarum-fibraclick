@@ -9,6 +9,11 @@ app.initializers.add('fibraclick-tweaks', () => {
             type: 'boolean'
         })
         .registerSetting({
+            setting: 'fibraclick.consent',
+            label: 'Show cookie consent',
+            type: 'boolean'
+        })
+        .registerSetting({
             setting: 'fibraclick.ads.load',
             label: 'Ads - Load AdSense',
             type: 'boolean'

@@ -32,6 +32,7 @@ return [
 
     (new Extend\Settings)
         ->serializeToForum('fibraclick.highlightKeywords', 'fibraclick.highlightKeywords')
+        ->serializeToForum('fibraclick.consent', 'fibraclick.consent')
         ->serializeToForum('fibraclick.ads.postsInterval', 'fibraclick.ads.postsInterval')
         ->serializeToForum('fibraclick.ads.show', 'fibraclick.ads.show')
         ->serializeToForum('fibraclick.ads.betweenPosts', 'fibraclick.ads.betweenPosts')
