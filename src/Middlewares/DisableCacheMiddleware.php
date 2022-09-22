@@ -15,6 +15,6 @@ class DisableCacheMiddleware implements MiddlewareInterface
     {
         $response = $handler->handle($request);
 
-        return $response->withHeader('Cache-Control', 'no-cache');
+        return $response->withHeader('Cache-Control', 'no-store');
     }
 }
