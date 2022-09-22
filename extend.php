@@ -75,4 +75,5 @@ return [
 
     (new Extend\Middleware('api'))
         ->insertAfter(AuthenticateWithSession::class, AuthHeaderMiddleware::class)
+        ->insertBefore(InjectActorReference::class, DisableCacheMiddleware::class)
 ];
