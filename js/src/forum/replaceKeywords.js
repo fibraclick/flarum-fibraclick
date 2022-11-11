@@ -34,6 +34,8 @@ const mappings = {
     hlog: 'https://fibra.click/hlog/',
     qln: 'https://fibra.click/hlog/',
     fibercop: 'https://fibra.click/fibercop/',
+    openfiber: 'https://fibra.click/openfiber/',
+    'open fiber': 'https://fibra.click/openfiber/',
     arlo: 'https://fibra.click/fibercop/#architettura',
     cro: 'https://fibra.click/fibercop/#architettura',
     venditori: 'https://forum.fibra.click/groups',
