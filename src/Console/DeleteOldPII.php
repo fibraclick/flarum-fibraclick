@@ -27,14 +27,18 @@ class DeleteOldPII extends Command
 
         $this->info('Deleting IP addresses from old posts...');
 
-        Post::where('created_at', '<', $threshold)
+        $affected = Post::where('created_at', '<', $threshold)
             ->update(['ip_address' => null]);
+
+        $this->info("Deleted IP addresses from $affected posts.");
 
         $this->info('Deleting IP addresses from old audit log entries...');
 
-        $this->db->table('kilowhat_audit_log')
+        $affected = $this->db->table('kilowhat_audit_log')
             ->where('created_at', '<', $threshold)
             ->update(['ip_address' => null]);
+
+        $this->info("Deleted IP addresses from $affected audit log entries.");
 
         $this->info('Done!');
     }
