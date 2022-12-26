@@ -2,12 +2,13 @@
 
 namespace FibraClick;
 
+use FibraClick\Console\DeleteOldPII;
 use FibraClick\Extenders\BindQueueFailer;
 use FibraClick\Listeners\ContentListener;
 use FibraClick\Listeners\DiscussionStartedListener;
 use FibraClick\Listeners\FlagDeleted;
-use FibraClick\Listeners\UserSavingListener;
 use FibraClick\Listeners\UserRegisteredListener;
+use FibraClick\Listeners\UserSavingListener;
 use FibraClick\Middlewares\AuthHeaderMiddleware;
 use FibraClick\Middlewares\DisableCacheMiddleware;
 use FibraClick\Serializers\AddFlairFields;
@@ -20,6 +21,7 @@ use Flarum\Http\Middleware\AuthenticateWithSession;
 use Flarum\Http\Middleware\InjectActorReference;
 use Flarum\User\Event\Registered;
 use Flarum\User\Event\Saving;
+use Illuminate\Console\Scheduling\Event;
 
 return [
     (new Extend\Frontend('forum'))
@@ -75,5 +77,11 @@ return [
 
     (new Extend\Middleware('api'))
         ->insertAfter(AuthenticateWithSession::class, AuthHeaderMiddleware::class)
-        ->insertBefore(InjectActorReference::class, DisableCacheMiddleware::class)
+        ->insertBefore(InjectActorReference::class, DisableCacheMiddleware::class),
+
+    (new Extend\Console())
+        ->command(DeleteOldPII::class)
+        ->schedule(DeleteOldPII::class, function (Event $schedule) {
+            $schedule->onOneServer()->daily();
+        }),
 ];
