@@ -21,6 +21,7 @@ use Flarum\Http\Middleware\AuthenticateWithSession;
 use Flarum\Http\Middleware\InjectActorReference;
 use Flarum\User\Event\Registered;
 use Flarum\User\Event\Saving;
+use Flarum\User\User;
 use Illuminate\Console\Scheduling\Event;
 
 return [
@@ -68,20 +69,28 @@ return [
         ->register(ServiceProvider::class),
 
     // Add X-Authenticated and Cache-Control headers
+    // To forum views:
     (new Extend\Middleware('forum'))
         ->insertAfter(AuthenticateWithSession::class, AuthHeaderMiddleware::class)
         ->insertBefore(InjectActorReference::class, DisableCacheMiddleware::class),
 
+    // To admin views:
     (new Extend\Middleware('admin'))
         ->insertAfter(AuthenticateWithSession::class, AuthHeaderMiddleware::class),
 
+    // To API:
     (new Extend\Middleware('api'))
         ->insertAfter(AuthenticateWithSession::class, AuthHeaderMiddleware::class)
         ->insertBefore(InjectActorReference::class, DisableCacheMiddleware::class),
 
+    // Schedule command to delete old PII
     (new Extend\Console())
         ->command(DeleteOldPII::class)
         ->schedule(DeleteOldPII::class, function (Event $schedule) {
             $schedule->onOneServer()->daily();
         }),
+
+    // API endpoint to delete PII for user
+    (new Extend\Routes('api'))
+        ->post('/users/{id}/delete-pii', 'users.delete-pii', Controllers\DeleteUserPIIController::class),
 ];

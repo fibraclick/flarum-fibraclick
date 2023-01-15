@@ -6,6 +6,7 @@ import WelcomeHero from 'flarum/forum/components/WelcomeHero';
 import QuickLinksComponent from './components/QuickLinksComponent';
 import User from 'flarum/common/models/User';
 import Model from 'flarum/common/Model';
+import UserControls from 'flarum/forum/utils/UserControls';
 import replaceKeywords from './replaceKeywords';
 import addLinksToSidebar from './addLinksToSidebar';
 import addTagsToSidebar from './addTagsToSidebar';
@@ -17,6 +18,7 @@ import extendUserModal from "./extendUserModal";
 import moveFlagButton from "./moveFlagButton";
 import fixLikeButtonPosition from "./fixLikeButtonPosition";
 import matchThemeColorToColorScheme from "./matchThemeColorToColorScheme";
+import addDeletePIIButton from "./addDeletePIIButton";
 
 app.initializers.add('fibraclick-flarum-tweaks', () => {
     // Enable keywords feature
@@ -53,5 +55,7 @@ app.initializers.add('fibraclick-flarum-tweaks', () => {
     fixLikeButtonPosition();
 
     matchThemeColorToColorScheme();
+
+    extend(UserControls, 'destructiveControls', addDeletePIIButton);
 }, -10);
 // priority added to override like button priority
