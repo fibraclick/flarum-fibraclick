@@ -17,7 +17,7 @@ export default function (items, user) {
                         app.alerts.show({type: 'success'}, 'Fatto. Dati personali eliminati.');
                     });
                 }}
-            >Elimina PII</Button>,
+            >Elimina dati personali</Button>,
             1
         );
     }
