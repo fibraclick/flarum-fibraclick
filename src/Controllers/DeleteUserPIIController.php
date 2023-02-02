@@ -2,8 +2,10 @@
 
 namespace FibraClick\Controllers;
 
+use Flarum\Bus\Dispatcher;
 use Flarum\Http\RequestUtil;
 use Flarum\Post\Post;
+use Flarum\User\Command\DeleteAvatar;
 use Flarum\User\User;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\Arr;
@@ -15,10 +17,12 @@ use Psr\Http\Server\RequestHandlerInterface;
 class DeleteUserPIIController implements RequestHandlerInterface
 {
     private ConnectionInterface $db;
+    private Dispatcher $bus;
 
-    public function __construct(ConnectionInterface $db)
+    public function __construct(ConnectionInterface $db, Dispatcher $bus)
     {
         $this->db = $db;
+        $this->bus = $bus;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -36,6 +40,10 @@ class DeleteUserPIIController implements RequestHandlerInterface
         $this->db->table('kilowhat_audit_log')
             ->where('actor_id', $userId)
             ->delete();
+
+        $this->bus->dispatch(
+            new DeleteAvatar($userId, $actor)
+        );
 
         return (new Response())->withStatus(204);
     }
