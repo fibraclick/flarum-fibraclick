@@ -65,7 +65,7 @@ class Telegram
             $text .= sprintf("\n<a href='%s'><strong>Vai al messaggio (#%d)</strong></a>", $postUrl, $flag->post->number);
 
             if ($deletedBy != null) {
-                $text .= sprintf("\n\n✅ Approvato/eliminato da <i>%s</i>", $deletedBy->username);
+                $text .= sprintf("\n\n✅ Gestito da <i>%s</i>", $deletedBy->username);
             }
 
             return $text;
