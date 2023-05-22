@@ -77,7 +77,7 @@ class ContentListener
     private function addConsent()
     {
         $this->document->head[] = <<<EOT
-        <script async type="text/javascript" src="https://clickio.mgr.consensu.org/t/consent_225036.js"></script>
+        <script async type="text/javascript" src="https://clickiocmp.com/t/consent_225036.js"></script>
 EOT;
     }
 
