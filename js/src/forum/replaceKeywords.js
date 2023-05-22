@@ -46,7 +46,8 @@ const mappings = {
     bbr: 'https://fibra.click/tcp/',
     bbrv1: 'https://fibra.click/tcp/',
     bbrv2: 'https://fibra.click/tcp/',
-    cubic: 'https://fibra.click/tcp/'
+    cubic: 'https://fibra.click/tcp/',
+    pcn: 'https://fibra.click/riconoscere-rete-bul/#pcn-centrali'
 };
 
 // https://stackoverflow.com/a/18622606/1633924
