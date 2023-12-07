@@ -17,14 +17,14 @@ class UserSavingListener
 
         $flairName = Arr::get($event->data, 'attributes.flairName');
 
-        if ($flairName != null) {
-            $event->user->flair_name = $flairName;
+        if (isset($flairName)) {
+            $event->user->flair_name = !empty($flairName) ? $flairName : null;
         }
 
         $flairColor = Arr::get($event->data, 'attributes.flairColor');
 
-        if ($flairColor != null) {
-            $event->user->flair_color = $flairColor;
+        if (isset($flairColor)) {
+            $event->user->flair_color = !empty($flairColor) ? $flairColor : null;
         }
     }
 }
